@@ -82,8 +82,6 @@ def alexander():
     inputtxt.focus()
     inputtxt.pack(fill="both", expand='true')
 
-    Buttonvar = []
-
     def soundcall():
         V = vlc.MediaPlayer(save2)
         V.play()
@@ -92,11 +90,9 @@ def alexander():
         X = combo.get()
         Y = inputtxt.get(1.0, "end-1c")
         save3 = cwd+"/Alex/Alex.mp3"
-        Buttonvar = True
         if X == 'Georgian' or X == 'Hausa' or X == 'Hausa' or X == 'Hebrew' or X == 'Igbo' or X == 'Odia' or X == 'Yiddish' or X == 'Yoruba' or X == 'Kurdish' or X == 'Malagasy' or X == 'Marathi' or X == 'Sesotho':
             NA = {'Georgian': 'ka', 'Hausa': 'ha', 'Hebrew': 'he', 'Igbo': 'ig', 'Odia': 'or', 'Yiddish': 'yi', 'Yoruba': 'yo', 'Kurdish': 'ku', 'Malagasy' : 'mg', 'Marathi' : 'mr', 'Sesotho' : 'st'}
             translation=translator.translate(Y, dest=NA[X])
-            Buttonvar = False
         elif X == 'Arabic' or X == 'Pashto' or X == 'Persian' or X == 'Punjabi' or X == 'Sindhi' or X == 'Somali' or X == 'Sundanese'  or X == 'Urdu' or X == 'Uyghur':
             AR = {'Arabic': 'ar', 'Pashto': 'ps', 'Persian': 'fa', 'Punjabi': 'pa', 'Sindhi': 'sd', 'Somali': 'so', 'Sundanese': 'su', 'Urdu': 'ur', 'Uyghur': 'ug'}
             translation=translator.translate(Y, dest=AR[X])
