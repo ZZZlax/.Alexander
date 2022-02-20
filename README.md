@@ -1,5 +1,9 @@
 # Alex
 
+Alexander is a language learning tool designed for any skil levels. Translatle languages, search wikipedia in other languages, and learn to pronounce wordds from native speakers through the speech moodule.
+
+Future updates include a system for highlighting Nouns, Verbs, and the like as well as scroll over definitions and more.
+
 1. You will need to install python individually. On Ubuntu you may doing so by running the following command:
 
 sudo apt install python3
