@@ -1,0 +1,20 @@
+import subprocess, os
+subprocess.Popen("sudo apt install pip", shell=True, stdout=subprocess.PIPE).stdout.read()
+cwd = os.getcwd()
+save1 = cwd
+save2 = cwd+"/Desktop"
+F = open(save2+"/Alexander.desktop", 'w')
+Ins = ["[Desktop Entry]", "Type = Application", "Name = Alexander", "Encoding= UTF-8", "Exec = python3 "+cwd+"/Alex/Alexander.py", "Icon = "+cwd+"/Alex/Images/Logo.png", "StartupNotify = True"]
+F.writelines("%s\n" % i for i in Ins)
+F.close()
+subprocess.Popen("chmod +x "+save1+"/Desktop/Alexander.desktop", shell=True, stdout=subprocess.PIPE).stdout.read()
+subprocess.Popen("pip3 install googletrans==3.1.0a0", shell=True, stdout=subprocess.PIPE).stdout.read()
+subprocess.Popen("sudo apt install python3-vlc", shell=True, stdout=subprocess.PIPE).stdout.read()
+subprocess.Popen("pip3 install gtts", shell=True, stdout=subprocess.PIPE).stdout.read()
+subprocess.Popen("pip3 install pyttsx3", shell=True, stdout=subprocess.PIPE).stdout.read()
+subprocess.Popen("pip3 install speechrecognition", shell=True, stdout=subprocess.PIPE).stdout.read()
+subprocess.Popen("pip3 install tk", shell=True, stdout=subprocess.PIPE).stdout.read()
+subprocess.Popen("pip3 install wikipedia", shell=True, stdout=subprocess.PIPE).stdout.read()
+subprocess.Popen("sudo apt install python3-pip", shell=True, stdout=subprocess.PIPE).stdout.read()
+subprocess.Popen("sudo apt install python3-espeak", shell=True, stdout=subprocess.PIPE).stdout.read()
+subprocess.Popen("sudo apt install python3-pyaudio", shell=True, stdout=subprocess.PIPE).stdout.read()
