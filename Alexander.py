@@ -241,7 +241,7 @@ def alexander():
     def lookup():
         query = inputtxt.get("sel.first", "sel.last")
         inputtxt2.pack(fill="x")
-        for j in search(query, tld="co.in", num=1, stop=1, pause=2):
+        for j in search(query):
             h = j.split()
             inputtxt2.delete(1.0, "end-1c")
             inputtxt2.insert('1.0', h)
