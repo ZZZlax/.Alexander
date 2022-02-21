@@ -9,16 +9,8 @@ def imp():
     except:
         import subprocess, os
         def install():
-            subprocess.check_call(['apt', 'install', 'python3-pip'], user = "root")
-            subprocess.check_call(['apt', 'install', 'python3-tk'], user = "root")
-            subprocess.check_call(['apt', 'install', 'python3-vlc'], user = "root")
-            subprocess.check_call(['pip3', 'install', 'googlesearch-python'])
-            subprocess.check_call(['pip3', 'install', 'wikipedia'])
-            subprocess.check_call(['pip3', 'install', 'speechrecognition'])
-            subprocess.check_call(['pip3', 'install', 'pyttsx3'])
-            subprocess.check_call(['pip3', 'install', 'gtts'])
-            subprocess.check_call(['pip3', 'install', 'tk'])
-            subprocess.check_call(['pip3', 'install', 'googletrans==3.1.0a0'])
+            subprocess.check_call(['apt', 'install', 'python3-pip', 'python3-tk', 'python3-vlc'], user = "root")
+            subprocess.check_call(['pip3', 'install', 'googlesearch-python', 'wikipedia', 'speechrecognition', 'pyttsx3', 'gtts', 'googletrans==3.1.0a0'])
         install()
         dsktp = input("Create Desktop Item? [y/n]: ")
         if dsktp == "Y" or dsktp == "y":
