@@ -1,6 +1,6 @@
 # Alex
 
-Alexander is a language learning tool designed for any skil levels. Translatle languages, search wikipedia in other languages, and learn to pronounce wordds from native speakers through the speech moodule.
+Alexander is a language learning tool designed for any skil levels. Translatle languages, search wikipedia in other languages, or search google in your browsers defined region(s), and learn to pronounce words from native speakers through the speech module.
 
 Future updates include a system for highlighting Nouns, Verbs, and the like as well as scroll over definitions and more.
 
@@ -9,7 +9,6 @@ Future updates include a system for highlighting Nouns, Verbs, and the like as w
 sudo apt install python3
 
 or by downloading from the website
-
 https://www.python.org/downloads/
 
 2. Open the terminal and copy/paste or type this command:
