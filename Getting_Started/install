@@ -17,5 +17,6 @@ subprocess.Popen("pip3 install pyttsx3", shell=True, stdout=subprocess.PIPE).std
 subprocess.Popen("pip3 install speechrecognition", shell=True, stdout=subprocess.PIPE).stdout.read()
 subprocess.Popen("pip3 install tk", shell=True, stdout=subprocess.PIPE).stdout.read()
 subprocess.Popen("pip3 install wikipedia", shell=True, stdout=subprocess.PIPE).stdout.read()
+subprocess.Popen("pip3 install webbrowser", shell=True, stdout=subprocess.PIPE).stdout.read()
 subprocess.Popen("sudo apt-get install python3-tk", shell=True, stdout=subprocess.PIPE).stdout.read()
 subprocess.Popen("y /n", shell=True, stdout=subprocess.PIPE).stdout.read()
