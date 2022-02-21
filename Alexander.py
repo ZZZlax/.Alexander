@@ -85,6 +85,7 @@ def alexander():
     inputtxt.pack(fill="both", expand='true')
     inputtxt2 = tk.Text(root, height=1, width=35, fg='blue', bg='black', wrap='word', undo="true", foreground='white', selectforeground='blue')
 
+
     def soundcall():
         inputtxt2.pack_forget()
         V = vlc.MediaPlayer(save2)
@@ -239,7 +240,7 @@ def alexander():
         inputtxt.insert('1.0', wiki)
 
     def lookup():
-        query = inputtxt.get(1.0, "end-1c")
+        query = inputtxt.get("sel.first", "sel.last")
         inputtxt2.pack(fill="y")
         for j in search(query, tld="co.in", num=1, stop=1, pause=2):
             h = j.split()
@@ -247,16 +248,24 @@ def alexander():
             inputtxt2.insert('1.0', h)
         webbrowser.open((inputtxt2.get(1.0, "end-1c")), new=2)
 
+    m = Menu(root, tearoff = 0)
+    m.add_command(label ="Search", command= lookup)
+
+    def popup(event):
+        try:
+            m.tk_popup(event.x_root, event.y_root)
+        finally:
+            m.grab_release()
+    inputtxt.bind("<Button-3>", popup)
+
     btn1 = PhotoImage(file = save1+"Alex.png")
     btn2 = PhotoImage(file = save1+"speak.png")
     btn3 = PhotoImage(file = save1+"record.png")
     btn4 = PhotoImage(file = save1+"wiki.png")
-    btn5 = PhotoImage(file = save1+"search.png")
     ttk.Button(image = btn1, command=transcall).pack()
     Button = ttk.Button(image = btn2, command=soundcall)
     ttk.Button(image = btn3, command=speaktext).pack()
     ttk.Button(image= btn4, command=wikisearch).pack()
-    ttk.Button(image= btn5, command=lookup).pack()
 
     root.mainloop()
 
