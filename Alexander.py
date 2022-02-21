@@ -1,8 +1,10 @@
 def alexander():
-    import gtts, googletrans, vlc, pyttsx3, os, os.path, wikipedia, speech_recognition, pprint
+    import gtts, googletrans, vlc, pyttsx3, os, os.path, wikipedia, speech_recognition, pprint, webbrowser
     import tkinter as tk
     from tkinter import Tk, PhotoImage, ttk, Menu, filedialog, scrolledtext
     from googletrans import Translator, constants
+    from googlesearch import search
+    from urllib.request import urlopen
 
     translator=Translator()
     root = Tk()
@@ -81,12 +83,15 @@ def alexander():
     inputtxt = scrolledtext.ScrolledText(root, height=10, width=35, fg='blue', bg='white', wrap='word', undo="true", foreground='blue', selectforeground='blue')
     inputtxt.focus()
     inputtxt.pack(fill="both", expand='true')
+    inputtxt2 = tk.Text(root, height=1, width=35, fg='blue', bg='black', wrap='word', undo="true", foreground='white', selectforeground='blue')
 
     def soundcall():
+        inputtxt2.pack_forget()
         V = vlc.MediaPlayer(save2)
         V.play()
 
     def transcall():
+        inputtxt2.pack_forget()
         X = combo.get()
         Y = inputtxt.get(1.0, "end-1c")
         save3 = cwd+"/Alex/Alex.mp3"
@@ -203,6 +208,7 @@ def alexander():
         inputtxt.insert('1.0', translation.text)
 
     def speaktext():
+        inputtxt2.pack_forget()
         engine = pyttsx3.init('espeak')
         engine.runAndWait()
         r = speech_recognition.Recognizer()
@@ -220,6 +226,7 @@ def alexander():
         inputtxt.insert('1.0', speech)
 
     def wikisearch():
+        inputtxt2.pack_forget()
         languages = {'Afrikaans': 'af', 'Albanian': 'sq', 'Armenian': 'ar', 'Azerbaijani': 'hy', 'Basque': 'az', 'Belarusian': 'eu', 'Bengali': 'be', 'Bosnian': 'bn', 'Bulgarian': 'bs', 'Burmese': 'bg', 'Catalan': 'ca', 'Cebuano': 'ceb', 'Chichewa': 'ny', 'Chinese-Simplified': 'zh-cn', 'Chinese-Traditional': 'zh-tw', 'Corsican': 'co', 'Croatian': 'hr', 'Czech': 'cs', 'Danish': 'da', 'Dutch': 'nl', 'English': 'en', 'Esperanto': 'eo', 'Estonian': 'et', 'Filipino': 'tl', 'Finnish': 'fi', 'French': 'fr', 'Frisian': 'fy', 'Galician': 'gl', 'Georgian': 'ka', 'German': 'de', 'Greek': 'el', 'Gujarati': 'gu', 'Haitian': 'gt', 'Creole': 'ha', 'Hausa': 'haw', 'Hawaiian': 'iw', 'Hebrew': 'he', 'Hindi': 'hi', 'Hmong': 'hmn', 'Hungarian': 'hu', 'Icelandic': 'is', 'Igbo': 'ig', 'Indonesian': 'id', 'Irish': 'ga', 'Italian': 'it', 'Japanese': 'ja', 'Javanese': 'jw', 'Kannada': 'kn', 'Kazakh': 'kk', 'Khmer': 'km', 'Korean': 'ko', 'Kurdish': 'ku', 'Kyrgyz': 'ky', 'Lao': 'lo', 'Latin': 'la', 'Latvian': 'lv', 'Lithuanian': 'lt', 'Luxembourgish': 'lb', 'Macedonian': 'mk', 'Malay': 'mg', 'Malayalam': 'ms', 'Malagasy': 'ml', 'Maltese': 'mt', 'Maori': 'mi', 'Marathi': 'mr', 'Mongolian': 'mn', 'Nepali': 'my', 'Norwegian': 'ne', 'Odia': 'no', 'Pashto': 'or', 'Persian': 'ps', 'Polish': 'fa', 'Portuguese': 'pl', 'Punjabi': 'pt', 'Romanian': 'pa', 'Russian': 'ro', 'Samoan': 'ru', 'Scots': 'sm', 'Gaelic': 'gd', 'Serbian': 'sr', 'Sesotho': 'st', 'Shona': 'sn', 'Sindhi': 'sd', 'Sinhala': 'si', 'Slovak': 'sk', 'Slovenian': 'sl', 'Somali': 'so', 'Spanish': 'es', 'Sundanese': 'su', 'Swahili': 'sw', 'Swedish': 'sv', 'Tajik': 'tg', 'Tamil': 'ta', 'Telugu': 'te', 'Thai': 'th', 'Turkish': 'tr', 'Ukrainian': 'uk', 'Urdu': 'ur', 'Uyghur': 'ug', 'Uzbek': 'uz', 'Vietnamese': 'vi', 'Welsh': 'cy', 'Xhosa': 'xh', 'Yiddish': 'yi', 'Yoruba': 'yo', 'Zulu': 'zu'}
         X = combo.get()
         Y = languages[X]
@@ -231,14 +238,25 @@ def alexander():
         inputtxt.delete(1.0, "end-1c")
         inputtxt.insert('1.0', wiki)
 
+    def lookup():
+        query = inputtxt.get(1.0, "end-1c")
+        inputtxt2.pack(fill="y")
+        for j in search(query, tld="co.in", num=1, stop=1, pause=2):
+            h = j.split()
+            inputtxt2.delete(1.0, "end-1c")
+            inputtxt2.insert('1.0', h)
+        webbrowser.open((inputtxt2.get(1.0, "end-1c")), new=2)
+
     btn1 = PhotoImage(file = save1+"Alex.png")
     btn2 = PhotoImage(file = save1+"speak.png")
     btn3 = PhotoImage(file = save1+"record.png")
     btn4 = PhotoImage(file = save1+"wiki.png")
+    btn5 = PhotoImage(file = save1+"search.png")
     ttk.Button(image = btn1, command=transcall).pack()
     Button = ttk.Button(image = btn2, command=soundcall)
     ttk.Button(image = btn3, command=speaktext).pack()
     ttk.Button(image= btn4, command=wikisearch).pack()
+    ttk.Button(image= btn5, command=lookup).pack()
 
     root.mainloop()
 
