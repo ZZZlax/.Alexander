@@ -1,39 +1,23 @@
-def imp():
-    try:
-        import gtts, googletrans, vlc, pyttsx3, os, os.path, wikipedia, speech_recognition, pprint, webbrowser
-        import tkinter as tk
-        from tkinter import Tk, PhotoImage, ttk, Menu, filedialog, scrolledtext
-        from googletrans import Translator, constants
-        from googlesearch import search
-        from urllib.request import urlopen
-    except:
-        import subprocess, os
-        def install():
-            subprocess.check_call(['apt', 'install', 'python3-pip', 'python3-tk', 'python3-vlc'], user = "root")
-            subprocess.check_call(['pip3', 'install', 'googlesearch-python', 'wikipedia', 'speechrecognition', 'pyttsx3', 'gtts', 'googletrans==3.1.0a0'])
-        install()
-        dsktp = input("Create Desktop Item? [y/n]: ")
-        if dsktp == "Y" or dsktp == "y":
-            cwd = os.getcwd()
-            save1 = cwd
-            save2 = cwd+"/Desktop"
-            F = open(save2+"/Alexander.desktop", 'w')
-            Ins = ["[Desktop Entry]", "Type = Application", "Name = Alexander", "Encoding= UTF-8", "Exec = python3 "+cwd+"/Alex/Alexander.py", "Icon = "+cwd+"/Alex/Images/Logo.png", "StartupNotify = True"]
-            F.writelines("%s\n" % i for i in Ins)
-            F.close()
-            subprocess.Popen("chmod +x "+save1+"/Desktop/Alexander.desktop", shell=True, stdout=subprocess.PIPE).stdout.read()
-        else:
-            pass
+def ins():
+    import subprocess, os
+    def install():
+        subprocess.check_call(['apt', 'install', 'python3-pip', 'python3-tk', 'python3-vlc'], user = "root")
+        subprocess.check_call(['pip3', 'install', 'googlesearch-python', 'wikipedia', 'speechrecognition', 'pyttsx3', 'gtts', 'googletrans==3.1.0a0'])
+    install()
+    dsktp = input("Create Desktop Item? [y/n]: ")
+    if dsktp == "Y" or dsktp == "y":
+        cwd = os.getcwd()
+        save1 = cwd
+        save2 = cwd+"/Desktop"
+        F = open(save2+"/Alexander.desktop", 'w')
+        Ins = ["[Desktop Entry]", "Type = Application", "Name = Alexander", "Encoding= UTF-8", "Exec = python3 "+cwd+"/Alex/Alexander.py", "Icon = "+cwd+"/Alex/Images/Logo.png", "StartupNotify = True"]
+        F.writelines("%s\n" % i for i in Ins)
+        F.close()
+        subprocess.Popen("chmod +x "+save1+"/Desktop/Alexander.desktop", shell=True, stdout=subprocess.PIPE).stdout.read()
+    else:
+        pass
 
 def alexander():
-    import gtts, googletrans, vlc, pyttsx3, os, os.path, wikipedia, speech_recognition, pprint, webbrowser
-    import tkinter as tk
-    from tkinter import Tk, PhotoImage, ttk, Menu, filedialog, scrolledtext
-    from googletrans import Translator, constants
-    from googlesearch import search
-    from urllib.request import urlopen
-
-    translator=Translator()
     root = Tk()
     menubar = Menu(root, fg='white', bg='blue')
     root.title('Вавилонска кула')
@@ -116,6 +100,8 @@ def alexander():
         inputtxt2.pack_forget()
         V = vlc.MediaPlayer(save2)
         V.play()
+
+    translator=Translator()
 
     def transcall():
         inputtxt2.pack_forget()
@@ -296,5 +282,20 @@ def alexander():
     root.mainloop()
 
 if __name__ == "__main__":
-    imp()
-    alexander()
+    try:
+        import gtts, googletrans, vlc, pyttsx3, os, os.path, wikipedia, speech_recognition, pprint, webbrowser
+        import tkinter as tk
+        from tkinter import Tk, PhotoImage, ttk, Menu, filedialog, scrolledtext
+        from googletrans import Translator, constants
+        from googlesearch import search
+        from urllib.request import urlopen
+        alexander()
+    except:
+        ins()
+        import gtts, googletrans, vlc, pyttsx3, os, os.path, wikipedia, speech_recognition, pprint, webbrowser
+        import tkinter as tk
+        from tkinter import Tk, PhotoImage, ttk, Menu, filedialog, scrolledtext
+        from googletrans import Translator, constants
+        from googlesearch import search
+        from urllib.request import urlopen
+        alexander()
