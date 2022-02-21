@@ -83,8 +83,7 @@ def alexander():
     inputtxt = scrolledtext.ScrolledText(root, height=10, width=35, fg='blue', bg='white', wrap='word', undo="true", foreground='blue', selectforeground='blue')
     inputtxt.focus()
     inputtxt.pack(fill="both", expand='true')
-    inputtxt2 = tk.Text(root, height=1, width=35, fg='blue', bg='black', wrap='word', undo="true", foreground='white', selectforeground='blue')
-
+    inputtxt2 = tk.Text(root, height=1, fg='blue', bg='blue', wrap='word', undo="true", foreground='white', selectforeground='blue')
 
     def soundcall():
         inputtxt2.pack_forget()
@@ -241,7 +240,7 @@ def alexander():
 
     def lookup():
         query = inputtxt.get("sel.first", "sel.last")
-        inputtxt2.pack(fill="y")
+        inputtxt2.pack(fill="x")
         for j in search(query, tld="co.in", num=1, stop=1, pause=2):
             h = j.split()
             inputtxt2.delete(1.0, "end-1c")
