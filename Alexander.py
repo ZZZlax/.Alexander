@@ -139,77 +139,42 @@ def alexander():
         else:
             Y = inputtxt.get(1.0, "end-1c")
             save3 = cwd+"/.Alex/Alex.mp3"
-            if X == 'Georgian' or X == 'Hausa' or X == 'Hausa' or X == 'Hebrew' or X == 'Igbo' or X == 'Odia' or X == 'Yiddish' or X == 'Yoruba' or X == 'Kurdish' or X == 'Malagasy' or X == 'Marathi' or X == 'Sesotho':
-                NA = {'Georgian': 'ka', 'Hausa': 'ha', 'Hebrew': 'he', 'Igbo': 'ig', 'Odia': 'or', 'Yiddish': 'yi', 'Yoruba': 'yo', 'Kurdish': 'ku', 'Malagasy' : 'mg', 'Marathi' : 'mr', 'Sesotho' : 'st'}
-                translation=translator.translate(Y, dest=NA[X])
-            elif X == 'Arabic' or X == 'Pashto' or X == 'Persian' or X == 'Punjabi' or X == 'Sindhi' or X == 'Somali' or X == 'Sundanese'  or X == 'Urdu' or X == 'Uyghur':
-                AR = {'Arabic': 'ar', 'Pashto': 'ps', 'Persian': 'fa', 'Punjabi': 'pa', 'Sindhi': 'sd', 'Somali': 'so', 'Sundanese': 'su', 'Urdu': 'ur', 'Uyghur': 'ug'}
-                translation=translator.translate(Y, dest=AR[X])
+            languages = {'Afrikaans': 'af', 'Albanian': 'sq', 'Armenian': 'hy', 'Azerbaijani': 'az', 'Basque': 'eu', 'Belarusian': 'be', 'Bengali': 'bn', 'Bosnian': 'bs', 'Bulgarian': 'bg', 'Burmese': 'bg', 'Catalan': 'ca', 'Cebuano': 'ceb', 'Chichewa': 'ny', 'Chinese-Simplified': 'zh-cn', 'Chinese-Traditional': 'zh-tw', 'Corsican': 'co', 'Croatian': 'hr', 'Czech': 'cs', 'Danish': 'da', 'Dutch': 'nl', 'English': 'en', 'Esperanto': 'eo', 'Estonian': 'et', 'Filipino': 'tl', 'Finnish': 'fi', 'French': 'fr', 'Frisian': 'fy', 'Galician': 'gl', 'Georgian': 'ka', 'German': 'de', 'Greek': 'el', 'Gujarati': 'gu', 'Haitian': 'gt', 'Creole': 'ha', 'Hausa': 'haw', 'Hawaiian': 'iw', 'Hebrew': 'he', 'Hindi': 'hi', 'Hmong': 'hmn', 'Hungarian': 'hu', 'Icelandic': 'is', 'Igbo': 'ig', 'Indonesian': 'id', 'Irish': 'ga', 'Italian': 'it', 'Japanese': 'ja', 'Javanese': 'jw', 'Kannada': 'kn', 'Kazakh': 'kk', 'Khmer': 'km', 'Korean': 'ko', 'Kurdish': 'ku', 'Kyrgyz': 'ky', 'Lao': 'lo', 'Latin': 'la', 'Latvian': 'lv', 'Lithuanian': 'lt', 'Luxembourgish': 'lb', 'Macedonian': 'mk', 'Malay': 'mg', 'Malayalam': 'ms', 'Malagasy': 'ml', 'Maltese': 'mt', 'Maori': 'mi', 'Marathi': 'mr', 'Mongolian': 'mn', 'Nepali': 'ne', 'Norwegian': 'no', 'Odia': 'or', 'Pashto': 'ps', 'Persian': 'fa', 'Polish': 'pl', 'Portuguese': 'pt', 'Punjabi': 'pa', 'Romanian': 'ro', 'Russian': 'ru', 'Samoan': 'sm', 'Scots Gaelic': 'gd', 'Serbian': 'sr', 'Sesotho': 'st', 'Shona': 'sn', 'Sindhi': 'sd', 'Sinhala': 'si', 'Slovak': 'sk', 'Slovenian': 'sl', 'Somali': 'so', 'Spanish': 'es', 'Sundanese': 'su', 'Swahili': 'sw', 'Swedish': 'sv', 'Tajik': 'tg', 'Tamil': 'ta', 'Telugu': 'te', 'Thai': 'th', 'Turkish': 'tr', 'Ukrainian': 'uk', 'Urdu': 'ur', 'Uyghur': 'ug', 'Uzbek': 'uz', 'Vietnamese': 'vi', 'Welsh': 'cy', 'Xhosa': 'xh', 'Yiddish': 'yi', 'Yoruba': 'yo', 'Zulu': 'zu'}
+            translation=translator.translate(Y, dest=languages[X])
+            if X == 'Arabic' or X == 'Pashto' or X == 'Persian' or X == 'Punjabi' or X == 'Sindhi' or X == 'Somali' or X == 'Sundanese'  or X == 'Urdu' or X == 'Uyghur':
                 tts = gtts.gTTS((f"{translation.text}"), lang='ar')
             elif X == 'Azerbaijani' or X == 'Belarusian' or X == 'Kazakh' or X == 'Kyrgyz' or X == 'Mongolian' or X == 'Russian' or X ==   'Tajik' or X == 'Uzbek':
-                RU = {'Azerbaijani': 'az', 'Belarusian': 'be', 'Kazakh': 'kk', 'Kyrgyz': 'ky', 'Mongolian': 'mn', 'Russian': 'ru', 'Tajik': 'tg', 'Uzbek': 'uz'}
-                translation=translator.translate(Y, dest=RU[X])
                 tts = gtts.gTTS((f"{translation.text}"), lang='ru')
             elif X == 'Basque' or X == 'Spanish':
-                ES = {'Basque': 'eu', 'Spanish': 'es'}
-                translation=translator.translate(Y, dest=ES[X])
                 tts = gtts.gTTS((f"{translation.text}"), lang='es')
             elif X == 'Catalan' or X == 'Galician':
-                CA = {'Catalan': 'ca', 'Galician': 'gl'}
-                translation=translator.translate(Y, dest=CA[X])
                 tts = gtts.gTTS((f"{translation.text}"), lang='ca')
             elif X == 'Filipino' or X == 'Cebuano':
-                TL = {'Filipino': 'tl', 'Cebuano': 'ceb'}
-                translation=translator.translate(Y, dest=TL[X])
                 tts = gtts.gTTS((f"{translation.text}"), lang='tl')
             elif X == 'Italian' or X == 'Corsican':
-                IT = {'Italian': 'it', 'Corsican': 'co'}
-                translation=translator.translate(Y, dest=IT[X])
                 tts = gtts.gTTS((f"{translation.text}"), lang='it')
             elif X == 'German' or X == 'Frisian' or X == 'Luxembourgish':
-                DE = {'German': 'de', 'Frisian': 'fy', 'Luxembourgish': 'lb'}
-                translation=translator.translate(Y, dest=DE[X])
                 tts = gtts.gTTS((f"{translation.text}"), lang='de')
             elif X == 'Vietnamese' or X == 'Hmong':
-                VI = {'Vietnamese': 'vi', 'Hmong': 'hmn'}
-                translation=translator.translate(Y, dest=VI[X])
                 tts = gtts.gTTS((f"{translation.text}"), lang='vi')
             elif X == 'Thai' or X == 'Malay':
-                TH = {'Thai': 'th', 'Malay': 'ms'}
-                translation=translator.translate(Y, dest=TH[X])
                 tts = gtts.gTTS((f"{translation.text}"), lang='th')
             elif X == 'Latin' or X == 'Maltese':
-                LA = {'Latin': 'la', 'Maltese': 'mt'}
-                translation=translator.translate(Y, dest=LA[X])
                 tts = gtts.gTTS((f"{translation.text}"), lang='la')
             elif X == 'Latvian' or X == 'Lithuanian':
-                LV = {'Latvian': 'lv', 'Lithuanian': 'lt'}
-                translation=translator.translate(Y, dest=LV[X])
                 tts = gtts.gTTS((f"{translation.text}"), lang='lv')
             elif X == 'Javanese' or X == 'Hawaiian' or X == 'Samoan' or X == 'Maori':
-                JW = {'Javanese': 'jw', 'Hawaiian': 'haw', 'Samoan': 'sm', 'Maori': 'mi'}
-                translation=translator.translate(Y, dest=JW[X])
                 tts = gtts.gTTS((f"{translation.text}"), lang='jw')
             elif X == 'Slovak' or X == 'Slovenian':
-                SK = {'Slovak': 'sk', 'Slovenian': 'sl'}
-                translation=translator.translate(Y, dest=SK[X])
                 tts = gtts.gTTS((f"{translation.text}"), lang='sk')
             elif X == 'Welsh' or X == 'Scots Gaelic' or X == 'Irish':
-                CY = {'Welsh': 'cy', 'Scots Gaelic': 'gd', 'Irish': 'ga'}
-                translation=translator.translate(Y, dest=CY[X])
                 tts = gtts.gTTS((f"{translation.text}"), lang='cy')
             elif X == 'Swahili' or X == 'Chichewa' or X == 'Shona' or X == 'Xhosa' or X == 'Zulu':
-                SW = {'Swahili': 'ny', 'Chichewa': 'sw', 'Shona': 'sn', 'Xhosa': 'xh', 'Zulu': 'zu'}
-                translation=translator.translate(Y, dest=SW[X])
                 tts = gtts.gTTS((f"{translation.text}"), lang='sw')
             elif X == 'Haitian Creole' or X == 'French':
-                SK = {'French': 'fr', 'Haitian Creole': 'ht'}
-                translation=translator.translate(Y, dest=SK[X])
                 tts = gtts.gTTS((f"{translation.text}"), lang='fr')
             else:
-                ISO = {'Afrikaans': 'af', 'Albanian': 'sq', 'Armenian': 'hy', 'Bengali': 'bn', 'Bosnian': 'bs', 'Bulgarian': 'bg', 'Chinese Simplified': 'zh-cn', 'Chinese Traditional': 'zh-tw', 'Croatian': 'hr', 'Czech': 'cs', 'Danish': 'da', 'Dutch': 'nl', 'Esperanto': 'eo', 'English': 'en', 'Estonian': 'et', 'French': 'fr', 'Finnish': 'fi', 'Greek': 'el', 'Gujarati': 'gu', 'Hindi': 'hi', 'Hungarian': 'hu', 'Icelandic': 'is', 'Indonesian': 'id', 'Japanese': 'ja', 'Kannada': 'kn', 'Khmer': 'km', 'Korean': 'ko', 'Lao': 'lo', 'Macedonian': 'mk', 'Malayalam': 'ml', 'Burmese': 'my', 'Nepali': 'ne', 'Norwegian': 'no', 'Polish': 'pl', 'Portuguese': 'pt', 'Romanian': 'ro', 'Serbian': 'sr', 'Sinhala': 'si', 'Swedish': 'sv', 'Tamil': 'ta', 'Telugu': 'te', 'Turkish': 'tr', 'Ukrainian': 'uk'}
-                translation=translator.translate(Y, dest=ISO[X])
-                tts = gtts.gTTS((f"{translation.text}"), lang=ISO[X])
+                tts = gtts.gTTS((f"{translation.text}"), lang=language[X])
             if X == 'Georgian' or X == 'Hausa' or X == 'Hausa' or X == 'Hebrew' or X == 'Igbo' or X == 'Odia' or X == 'Yiddish' or X == 'Yoruba' or X == 'Kurdish' or X == 'Malagasy' or X == 'Marathi' or X == 'Sesotho':
                 Button.pack_forget()
             else:
