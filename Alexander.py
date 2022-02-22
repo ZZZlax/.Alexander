@@ -141,45 +141,13 @@ def alexander():
             save3 = cwd+"/.Alex/Alex.mp3"
             languages = {'Afrikaans': 'af', 'Albanian': 'sq', 'Armenian': 'hy', 'Azerbaijani': 'az', 'Basque': 'eu', 'Belarusian': 'be', 'Bengali': 'bn', 'Bosnian': 'bs', 'Bulgarian': 'bg', 'Burmese': 'bg', 'Catalan': 'ca', 'Cebuano': 'ceb', 'Chichewa': 'ny', 'Chinese-Simplified': 'zh-cn', 'Chinese-Traditional': 'zh-tw', 'Corsican': 'co', 'Croatian': 'hr', 'Czech': 'cs', 'Danish': 'da', 'Dutch': 'nl', 'English': 'en', 'Esperanto': 'eo', 'Estonian': 'et', 'Filipino': 'tl', 'Finnish': 'fi', 'French': 'fr', 'Frisian': 'fy', 'Galician': 'gl', 'Georgian': 'ka', 'German': 'de', 'Greek': 'el', 'Gujarati': 'gu', 'Haitian': 'gt', 'Creole': 'ha', 'Hausa': 'haw', 'Hawaiian': 'iw', 'Hebrew': 'he', 'Hindi': 'hi', 'Hmong': 'hmn', 'Hungarian': 'hu', 'Icelandic': 'is', 'Igbo': 'ig', 'Indonesian': 'id', 'Irish': 'ga', 'Italian': 'it', 'Japanese': 'ja', 'Javanese': 'jw', 'Kannada': 'kn', 'Kazakh': 'kk', 'Khmer': 'km', 'Korean': 'ko', 'Kurdish': 'ku', 'Kyrgyz': 'ky', 'Lao': 'lo', 'Latin': 'la', 'Latvian': 'lv', 'Lithuanian': 'lt', 'Luxembourgish': 'lb', 'Macedonian': 'mk', 'Malay': 'mg', 'Malayalam': 'ms', 'Malagasy': 'ml', 'Maltese': 'mt', 'Maori': 'mi', 'Marathi': 'mr', 'Mongolian': 'mn', 'Nepali': 'ne', 'Norwegian': 'no', 'Odia': 'or', 'Pashto': 'ps', 'Persian': 'fa', 'Polish': 'pl', 'Portuguese': 'pt', 'Punjabi': 'pa', 'Romanian': 'ro', 'Russian': 'ru', 'Samoan': 'sm', 'Scots Gaelic': 'gd', 'Serbian': 'sr', 'Sesotho': 'st', 'Shona': 'sn', 'Sindhi': 'sd', 'Sinhala': 'si', 'Slovak': 'sk', 'Slovenian': 'sl', 'Somali': 'so', 'Spanish': 'es', 'Sundanese': 'su', 'Swahili': 'sw', 'Swedish': 'sv', 'Tajik': 'tg', 'Tamil': 'ta', 'Telugu': 'te', 'Thai': 'th', 'Turkish': 'tr', 'Ukrainian': 'uk', 'Urdu': 'ur', 'Uyghur': 'ug', 'Uzbek': 'uz', 'Vietnamese': 'vi', 'Welsh': 'cy', 'Xhosa': 'xh', 'Yiddish': 'yi', 'Yoruba': 'yo', 'Zulu': 'zu'}
             translation=translator.translate(Y, dest=languages[X])
-            if X == 'Arabic' or X == 'Pashto' or X == 'Persian' or X == 'Punjabi' or X == 'Sindhi' or X == 'Somali' or X == 'Sundanese'  or X == 'Urdu' or X == 'Uyghur':
-                tts = gtts.gTTS((f"{translation.text}"), lang='ar')
-            elif X == 'Azerbaijani' or X == 'Belarusian' or X == 'Kazakh' or X == 'Kyrgyz' or X == 'Mongolian' or X == 'Russian' or X ==   'Tajik' or X == 'Uzbek':
-                tts = gtts.gTTS((f"{translation.text}"), lang='ru')
-            elif X == 'Basque' or X == 'Spanish':
-                tts = gtts.gTTS((f"{translation.text}"), lang='es')
-            elif X == 'Catalan' or X == 'Galician':
-                tts = gtts.gTTS((f"{translation.text}"), lang='ca')
-            elif X == 'Filipino' or X == 'Cebuano':
-                tts = gtts.gTTS((f"{translation.text}"), lang='tl')
-            elif X == 'Italian' or X == 'Corsican':
-                tts = gtts.gTTS((f"{translation.text}"), lang='it')
-            elif X == 'German' or X == 'Frisian' or X == 'Luxembourgish':
-                tts = gtts.gTTS((f"{translation.text}"), lang='de')
-            elif X == 'Vietnamese' or X == 'Hmong':
-                tts = gtts.gTTS((f"{translation.text}"), lang='vi')
-            elif X == 'Thai' or X == 'Malay':
-                tts = gtts.gTTS((f"{translation.text}"), lang='th')
-            elif X == 'Latin' or X == 'Maltese':
-                tts = gtts.gTTS((f"{translation.text}"), lang='la')
-            elif X == 'Latvian' or X == 'Lithuanian':
-                tts = gtts.gTTS((f"{translation.text}"), lang='lv')
-            elif X == 'Javanese' or X == 'Hawaiian' or X == 'Samoan' or X == 'Maori':
-                tts = gtts.gTTS((f"{translation.text}"), lang='jw')
-            elif X == 'Slovak' or X == 'Slovenian':
-                tts = gtts.gTTS((f"{translation.text}"), lang='sk')
-            elif X == 'Welsh' or X == 'Scots Gaelic' or X == 'Irish':
-                tts = gtts.gTTS((f"{translation.text}"), lang='cy')
-            elif X == 'Swahili' or X == 'Chichewa' or X == 'Shona' or X == 'Xhosa' or X == 'Zulu':
-                tts = gtts.gTTS((f"{translation.text}"), lang='sw')
-            elif X == 'Haitian Creole' or X == 'French':
-                tts = gtts.gTTS((f"{translation.text}"), lang='fr')
-            else:
-                tts = gtts.gTTS((f"{translation.text}"), lang=language[X])
             if X == 'Georgian' or X == 'Hausa' or X == 'Hausa' or X == 'Hebrew' or X == 'Igbo' or X == 'Odia' or X == 'Yiddish' or X == 'Yoruba' or X == 'Kurdish' or X == 'Malagasy' or X == 'Marathi' or X == 'Sesotho':
                 Button.pack_forget()
             else:
-                Button.pack()
+                spoken = {'Arabic':'ar', 'Pashto':'ar', 'Persian':'ar', 'Punjabi':'ar', 'Sindhi':'ar', 'Somali':'ar', 'Sundanese':'ar', 'Urdu':'ar', 'Uyghur':'ar', 'Azerbaijani':'ru', 'Belarusian':'ru', 'Kazakh':'ru', 'Kyrgyz':'ru', 'Mongolian':'ru', 'Russian':'ru', 'Tajik':'ru', 'Uzbek':'ru', 'Basque':'es', 'Spanish':'es', 'Catalan':'ca', 'Galician':'ca', 'Filipino':'tl', 'Cebuano':'tl', 'Italian':'it', 'Corsican':'it', 'German':'de', 'Frisian':'de', 'Luxembourgish':'de', 'Vietnamese':'vi', 'Hmong':'vi', 'Thai':'th', 'Malay':'th', 'Latin':'la', 'Maltese':'la', 'Latvian':'lv', 'Lithuanian':'lv', 'Javanese':'jw', 'Hawaiian':'jw', 'Samoan':'jw', 'Maori':'jw', 'Slovak':'sk', 'Slovenian':'sk', 'Welsh':'cy', 'Scots Gaelic':'cy', 'Irish':'cy', 'Swahili':'sw', 'Chichewa':'sw', 'Shona':'sw', 'Xhosa':'sw', 'Zulu':'sw', 'Haitian Creole':'fr', 'French':'fr', 'Afrikaans': 'af', 'Albanian': 'sq', 'Armenian': 'hy', 'Bengali': 'bn', 'Bosnian': 'bs', 'Bulgarian': 'bg', 'Chinese Simplified': 'zh-cn', 'Chinese Traditional': 'zh-tw', 'Croatian': 'hr', 'Czech': 'cs', 'Danish': 'da', 'Dutch': 'nl', 'Esperanto': 'eo', 'English': 'en', 'Estonian': 'et', 'French': 'fr', 'Finnish': 'fi', 'Greek': 'el', 'Gujarati': 'gu', 'Hindi': 'hi', 'Hungarian': 'hu', 'Icelandic': 'is', 'Indonesian': 'id', 'Japanese': 'ja', 'Kannada': 'kn', 'Khmer': 'km', 'Korean': 'ko', 'Lao': 'lo', 'Macedonian': 'mk', 'Malayalam': 'ml', 'Burmese': 'my', 'Nepali': 'ne', 'Norwegian': 'no', 'Polish': 'pl', 'Portuguese': 'pt', 'Romanian': 'ro', 'Serbian': 'sr', 'Sinhala': 'si', 'Swedish': 'sv', 'Tamil': 'ta', 'Telugu': 'te', 'Turkish': 'tr', 'Ukrainian': 'uk'}
+                tts = gtts.gTTS((f"{translation.text}"), lang=spoken[X])
                 tts.save(save3)
+                Button.pack()
             inputtxt.delete(1.0, "end-1c")
             inputtxt.insert(1.0, translation.text)
 
