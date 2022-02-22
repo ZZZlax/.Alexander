@@ -1,6 +1,6 @@
 # Alex
 
-Alexander is a language learning tool designed for any skil levels. Translatle languages, search wikipedia in other languages, or search google in your browsers defined region(s), and learn to pronounce words from native speakers through the speech module.
+Alexander is a language learning tool designed for any skil level. Translatle languages, search wikipedia in other languages, or search google in your browsers defined region(s), and learn to pronounce words from native speakers through the speech module.
 
 Future updates include a system for highlighting Nouns, Verbs, and the like as well as scroll over definitions and more.
 
