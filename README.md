@@ -18,3 +18,5 @@ sudo python3 /home/[username]/Alex/Alexander.py
 3. If you chose to create a Desktop Item you must enable launching. To do so right click on the "Alexander.desktop" created by the installer. Scroll down to "Allow Launching" and click.
 
 You may now launch Alexander from the desktop by right clicking. You may also drag and drop the icon into a bar on your systems desktop.
+
+To hide Alex folder in /home/[username] simply rename the Alex folder .Alex
