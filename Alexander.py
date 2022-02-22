@@ -24,9 +24,7 @@ def alexander():
         defaultlang = B
     else:
         defaultlang = "zh-tw"
-
     translator=Translator()
-
     ser = translator.translate("Search", defaultlang)
     sel = translator.translate("Select Language", defaultlang)
     fil = translator.translate("File", defaultlang)
@@ -37,6 +35,10 @@ def alexander():
     day = translator.translate("Day Mode", defaultlang)
     nit = translator.translate("Night Mode", defaultlang)
     err = translator.translate("Error", defaultlang)
+    snr = translator.translate("Speech not recognized", defaultlang)
+    cnf = translator.translate("Could not fetch results", defaultlang)
+    SNR = (snr.text)
+    CNF = (cnf.text)
     Error = (err.text)
     Sear = (ser.text)
     SelectL = (sel.text)
@@ -54,7 +56,6 @@ def alexander():
     root.config(menu=menubar)
     root.resizable(True, True)
     frm = ttk.Frame(root, padding=10).pack()
-
     style= ttk.Style()
     style.theme_use('alt')
     root['bg']='black'
@@ -70,7 +71,6 @@ def alexander():
     cwd = os.getcwd()
     save1 = cwd+'/.Alex/Images/'
     save2 = cwd+"/.Alex/Alex.mp3"
-
     def browsefiles():
         filetypes = (('text files', '*.txt'), ('All files', '*.*'))
         f = filedialog.askopenfile(filetypes=filetypes)
@@ -104,7 +104,6 @@ def alexander():
         style.configure("TLabel", background='white', fieldbackground='white')
         root.option_add('*TCombobox*Listbox.selectBackground', 'blue')
         root.option_add('*TCombobox*Listbox.selectForeground', 'white')
-
     file_menu = Menu(menubar, background='black', foreground='blue', activebackground='blue', activeforeground='white')
     options = Menu(menubar, background='black', foreground='blue', activebackground='blue', activeforeground='white')
     menubar.add_cascade(label=File, menu=file_menu)
@@ -129,6 +128,8 @@ def alexander():
         inputtxt2.pack_forget()
         V = vlc.MediaPlayer(save2)
         V.play()
+        inputtxt.tag_add("start", "1.0","end-1c")
+        inputtxt.tag_configure("start",background="black", foreground= "white")
 
     def transcall():
         inputtxt2.pack_forget()
@@ -140,7 +141,7 @@ def alexander():
         else:
             Y = inputtxt.get(1.0, "end-1c")
             save3 = cwd+"/.Alex/Alex.mp3"
-            languages = {'Afrikaans': 'af', 'Albanian': 'sq', 'Armenian': 'hy', 'Azerbaijani': 'az', 'Basque': 'eu', 'Belarusian': 'be', 'Bengali': 'bn', 'Bosnian': 'bs', 'Bulgarian': 'bg', 'Burmese': 'bg', 'Catalan': 'ca', 'Cebuano': 'ceb', 'Chichewa': 'ny', 'Chinese-Simplified': 'zh-cn', 'Chinese-Traditional': 'zh-tw', 'Corsican': 'co', 'Croatian': 'hr', 'Czech': 'cs', 'Danish': 'da', 'Dutch': 'nl', 'English': 'en', 'Esperanto': 'eo', 'Estonian': 'et', 'Filipino': 'tl', 'Finnish': 'fi', 'French': 'fr', 'Frisian': 'fy', 'Galician': 'gl', 'Georgian': 'ka', 'German': 'de', 'Greek': 'el', 'Gujarati': 'gu', 'Haitian': 'gt', 'Creole': 'ha', 'Hausa': 'haw', 'Hawaiian': 'iw', 'Hebrew': 'he', 'Hindi': 'hi', 'Hmong': 'hmn', 'Hungarian': 'hu', 'Icelandic': 'is', 'Igbo': 'ig', 'Indonesian': 'id', 'Irish': 'ga', 'Italian': 'it', 'Japanese': 'ja', 'Javanese': 'jw', 'Kannada': 'kn', 'Kazakh': 'kk', 'Khmer': 'km', 'Korean': 'ko', 'Kurdish': 'ku', 'Kyrgyz': 'ky', 'Lao': 'lo', 'Latin': 'la', 'Latvian': 'lv', 'Lithuanian': 'lt', 'Luxembourgish': 'lb', 'Macedonian': 'mk', 'Malay': 'mg', 'Malayalam': 'ms', 'Malagasy': 'ml', 'Maltese': 'mt', 'Maori': 'mi', 'Marathi': 'mr', 'Mongolian': 'mn', 'Nepali': 'ne', 'Norwegian': 'no', 'Odia': 'or', 'Pashto': 'ps', 'Persian': 'fa', 'Polish': 'pl', 'Portuguese': 'pt', 'Punjabi': 'pa', 'Romanian': 'ro', 'Russian': 'ru', 'Samoan': 'sm', 'Scots Gaelic': 'gd', 'Serbian': 'sr', 'Sesotho': 'st', 'Shona': 'sn', 'Sindhi': 'sd', 'Sinhala': 'si', 'Slovak': 'sk', 'Slovenian': 'sl', 'Somali': 'so', 'Spanish': 'es', 'Sundanese': 'su', 'Swahili': 'sw', 'Swedish': 'sv', 'Tajik': 'tg', 'Tamil': 'ta', 'Telugu': 'te', 'Thai': 'th', 'Turkish': 'tr', 'Ukrainian': 'uk', 'Urdu': 'ur', 'Uyghur': 'ug', 'Uzbek': 'uz', 'Vietnamese': 'vi', 'Welsh': 'cy', 'Xhosa': 'xh', 'Yiddish': 'yi', 'Yoruba': 'yo', 'Zulu': 'zu'}
+            languages = {'Arabic':'ar', 'Afrikaans': 'af', 'Albanian': 'sq', 'Armenian': 'hy', 'Azerbaijani': 'az', 'Basque': 'eu', 'Belarusian': 'be', 'Bengali': 'bn', 'Bosnian': 'bs', 'Bulgarian': 'bg', 'Burmese': 'bg', 'Catalan': 'ca', 'Cebuano': 'ceb', 'Chichewa': 'ny', 'Chinese-Simplified': 'zh-cn', 'Chinese-Traditional': 'zh-tw', 'Corsican': 'co', 'Croatian': 'hr', 'Czech': 'cs', 'Danish': 'da', 'Dutch': 'nl', 'English': 'en', 'Esperanto': 'eo', 'Estonian': 'et', 'Filipino': 'tl', 'Finnish': 'fi', 'French': 'fr', 'Frisian': 'fy', 'Galician': 'gl', 'Georgian': 'ka', 'German': 'de', 'Greek': 'el', 'Gujarati': 'gu', 'Haitian': 'gt', 'Creole': 'ha', 'Hausa': 'haw', 'Hawaiian': 'iw', 'Hebrew': 'he', 'Hindi': 'hi', 'Hmong': 'hmn', 'Hungarian': 'hu', 'Icelandic': 'is', 'Igbo': 'ig', 'Indonesian': 'id', 'Irish': 'ga', 'Italian': 'it', 'Japanese': 'ja', 'Javanese': 'jw', 'Kannada': 'kn', 'Kazakh': 'kk', 'Khmer': 'km', 'Korean': 'ko', 'Kurdish': 'ku', 'Kyrgyz': 'ky', 'Lao': 'lo', 'Latin': 'la', 'Latvian': 'lv', 'Lithuanian': 'lt', 'Luxembourgish': 'lb', 'Macedonian': 'mk', 'Malay': 'mg', 'Malayalam': 'ms', 'Malagasy': 'ml', 'Maltese': 'mt', 'Maori': 'mi', 'Marathi': 'mr', 'Mongolian': 'mn', 'Nepali': 'ne', 'Norwegian': 'no', 'Odia': 'or', 'Pashto': 'ps', 'Persian': 'fa', 'Polish': 'pl', 'Portuguese': 'pt', 'Punjabi': 'pa', 'Romanian': 'ro', 'Russian': 'ru', 'Samoan': 'sm', 'Scots Gaelic': 'gd', 'Serbian': 'sr', 'Sesotho': 'st', 'Shona': 'sn', 'Sindhi': 'sd', 'Sinhala': 'si', 'Slovak': 'sk', 'Slovenian': 'sl', 'Somali': 'so', 'Spanish': 'es', 'Sundanese': 'su', 'Swahili': 'sw', 'Swedish': 'sv', 'Tajik': 'tg', 'Tamil': 'ta', 'Telugu': 'te', 'Thai': 'th', 'Turkish': 'tr', 'Ukrainian': 'uk', 'Urdu': 'ur', 'Uyghur': 'ug', 'Uzbek': 'uz', 'Vietnamese': 'vi', 'Welsh': 'cy', 'Xhosa': 'xh', 'Yiddish': 'yi', 'Yoruba': 'yo', 'Zulu': 'zu'}
             translation=translator.translate(Y, dest=languages[X])
             NA = ['Georgian', 'Hausa', 'Hausa', 'Hebrew', 'Igbo', 'Odia', 'Yiddish', 'Yoruba', 'Kurdish', 'Malagasy', 'Marathi', 'Sesotho']
             if X in NA:
@@ -152,12 +153,10 @@ def alexander():
                 Button.pack()
             inputtxt.delete(1.0, "end-1c")
             inputtxt.insert(1.0, translation.text)
+            inputtxt.focus()
+
 
     def speaktext():
-        snr = translator.translate("Speech not recognized", defaultlang)
-        cnf = translator.translate("Could not fetch results", defaultlang)
-        SNR = (snr.text)
-        CNF = (cnf.text)
         inputtxt2.pack_forget()
         engine = pyttsx3.init('espeak')
         engine.runAndWait()
@@ -174,6 +173,7 @@ def alexander():
                 speech = (CNF)
         inputtxt.delete(1.0, "end-1c")
         inputtxt.insert(1.0, speech)
+        inputtxt.focus()
 
     def wikisearch():
         inputtxt2.pack_forget()
@@ -188,10 +188,12 @@ def alexander():
                 wiki = "404"
             inputtxt.delete(1.0, "end-1c")
             inputtxt.insert(1.0, wiki)
+            inputtxt.focus()
         except:
             sellang = Error
             inputtxt.delete(1.0, "end-1c")
             inputtxt.insert(1.0, sellang)
+            combo.focus()
             pass
 
     def lookup():
@@ -201,6 +203,7 @@ def alexander():
             h = j.split()
             inputtxt2.delete(1.0, "end-1c")
             inputtxt2.insert(1.0, h)
+            inputtxt2.focus()
         webbrowser.open((inputtxt2.get(1.0, "end-1c")), new=2)
 
     se = Menu(root, tearoff = 0, background='black', foreground='blue', activebackground='blue', activeforeground='white')
