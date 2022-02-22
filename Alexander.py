@@ -10,7 +10,7 @@ def ins():
         save1 = cwd
         save2 = cwd+"/Desktop"
         F = open(save2+"/Alexander.desktop", 'w')
-        Ins = ["[Desktop Entry]", "Type = Application", "Name = Alexander", "Encoding= UTF-8", "Exec = python3 "+cwd+"/Alex/Alexander.py", "Icon = "+cwd+"/Alex/Images/Logo.png", "StartupNotify = True"]
+        Ins = ["[Desktop Entry]", "Type = Application", "Name = Alexander", "Encoding= UTF-8", "Exec = python3 "+cwd+"/.Alex/Alexander.py", "Icon = "+cwd+"/.Alex/Images/Logo.png", "StartupNotify = True"]
         F.writelines("%s\n" % i for i in Ins)
         F.close()
         subprocess.Popen("chmod +x "+save1+"/Desktop/Alexander.desktop", shell=True, stdout=subprocess.PIPE).stdout.read()
@@ -38,6 +38,8 @@ def alexander():
     exi = translator.translate("Exit", defaultlang)
     day = translator.translate("Day Mode", defaultlang)
     nit = translator.translate("Night Mode", defaultlang)
+    err = translator.translate("Error", defaultlang)
+    Error = (err.text)
     Sear = (ser.text)
     SelectL = (sel.text)
     File = (fil.text)
@@ -68,8 +70,8 @@ def alexander():
     style.configure("TScrollbar", troughcolor="blue")
 
     cwd = os.getcwd()
-    save1 = cwd+'/Alex/Images/'
-    save2 = cwd+"/Alex/Alex.mp3"
+    save1 = cwd+'/.Alex/Images/'
+    save2 = cwd+"/.Alex/Alex.mp3"
 
     def browsefiles():
         filetypes = (('text files', '*.txt'), ('All files', '*.*'))
@@ -140,7 +142,7 @@ def alexander():
             pass
         else:
             Y = inputtxt.get(1.0, "end-1c")
-            save3 = cwd+"/Alex/Alex.mp3"
+            save3 = cwd+"/.Alex/Alex.mp3"
             if X == 'Georgian' or X == 'Hausa' or X == 'Hausa' or X == 'Hebrew' or X == 'Igbo' or X == 'Odia' or X == 'Yiddish' or X == 'Yoruba' or X == 'Kurdish' or X == 'Malagasy' or X == 'Marathi' or X == 'Sesotho':
                 NA = {'Georgian': 'ka', 'Hausa': 'ha', 'Hebrew': 'he', 'Igbo': 'ig', 'Odia': 'or', 'Yiddish': 'yi', 'Yoruba': 'yo', 'Kurdish': 'ku', 'Malagasy' : 'mg', 'Marathi' : 'mr', 'Sesotho' : 'st'}
                 translation=translator.translate(Y, dest=NA[X])
@@ -285,7 +287,7 @@ def alexander():
             inputtxt.delete(1.0, "end-1c")
             inputtxt.insert('1.0', wiki)
         except:
-            sellang = "Please select a language"
+            sellang = Error
             inputtxt.delete(1.0, "end-1c")
             inputtxt.insert('1.0', sellang)
             pass
