@@ -5,13 +5,12 @@ def ins():
     dsktp = input("Create Desktop Item? [y/n]: ")
     if dsktp == "Y" or dsktp == "y":
         cwd = os.getcwd()
-        save1 = cwd
         save2 = cwd+"/Desktop"
         F = open(save2+"/Alexander.desktop", 'w')
         Ins = ["[Desktop Entry]", "Type = Application", "Name = Alexander", "Encoding= UTF-8", "Exec = python3 "+cwd+"/.Alex/Alexander.py", "Icon = "+cwd+"/.Alex/Images/Logo.png", "StartupNotify = True"]
         F.writelines("%s\n" % i for i in Ins)
         F.close()
-        subprocess.Popen("chmod +x "+save1+"/Desktop/Alexander.desktop", shell=True, stdout=subprocess.PIPE).stdout.read()
+        subprocess.Popen("chmod +x "+cwd+"/Desktop/Alexander.desktop", shell=True, stdout=subprocess.PIPE).stdout.read()
     else:
         pass
 
