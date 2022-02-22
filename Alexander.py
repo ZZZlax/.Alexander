@@ -220,6 +220,10 @@ def alexander():
             inputtxt.insert('1.0', translation.text)
 
     def speaktext():
+        snr = translator.translate("Speech not recognized", defaultlang)
+        cnf = translator.translate("Could not fetch results", defaultlang)
+        SNR = (snr.text)
+        CNF = (cnf.text)
         inputtxt2.pack_forget()
         engine = pyttsx3.init('espeak')
         engine.runAndWait()
@@ -231,9 +235,9 @@ def alexander():
                 speech = r.recognize_google(audio)
                 engine.say(speech)
             except speech_recognition.UnknownValueError:
-                speech =("Speech not recognized")
+                speech =(SNR)
             except speech_recognition.RequestError as e:
-                speech = ("Could not fetch results")
+                speech = (CNF)
         inputtxt.delete(1.0, "end-1c")
         inputtxt.insert('1.0', speech)
 
