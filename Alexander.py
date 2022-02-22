@@ -50,23 +50,43 @@ def alexander():
     DayM = (day.text)
     NightM = (nit.text)
 
+    bl = "Black"
+    bu = "Blue"
+    wh = "White"
+
     root = Tk()
-    menubar = Menu(root, fg='white', bg='blue')
+    menubar = Menu(root, fg=wh, bg=bu)
     root.title('Вавилонска кула')
     root.config(menu=menubar)
     root.resizable(True, True)
     frm = ttk.Frame(root, padding=10).pack()
+
+    def night():
+        root['bg']= bl
+        file_menu = Menu(menubar, background=bl, activeforeground=bl)
+        style.configure("TCombobox", background=bl, foreground=wh, fieldbackground=bl)
+        style.configure("TButton", background=bl, foreground=wh, fieldbackground=bl)
+        style.configure("TLabel"+"TFrame", background=bl, fieldbackground=bl)
+        style.configure("TScrollbar", background=bl, fieldbackground=bl)
+        root.option_add('*TCombobox*Listbox.selectForeground', bl)
+    def day():
+        root['bg']= wh
+        file_menu = Menu(menubar, background=wh, activeforeground=wh)
+        style.configure("TCombobox", background=wh, foreground=bu, fieldbackground=wh)
+        style.configure("TButton", background=wh, foreground=bu, fieldbackground=wh)
+        style.configure("TFrame"+"TLabel", background=wh, fieldbackground=wh)
+        style.configure("TScrollbar", background=wh, fieldbackground=wh)
+        root.option_add('*TCombobox*Listbox.selectForeground', wh)
     style= ttk.Style()
     style.theme_use('alt')
-    root['bg']='black'
-    style.configure("TCombobox", arrowcolor='blue', background='black', bordercolor='blue', darkcolor='black', focusfill='blue', foreground='white', fieldbackground='black', selectforeground='blue')
-    style.configure("TButton", arrowcolor='blue', background='black', bordercolor='blue', darkcolor='black', focusfill='blue', foreground='white', fieldbackground='black', selectforeground='blue')
-    style.configure("TFrame", arrowcolor='blue', background='black', bordercolor='blue', darkcolor='black', focusfill='blue', foreground='blue', fieldbackground='black', selectforeground='blue')
-    style.configure("TScrollbar", arrowcolor='blue', background='black', bordercolor='blue', darkcolor='black', focusfill='blue', foreground='blue', fieldbackground='black', selectforeground='blue', highlight='blue')
-    style.configure("TLabel", arrowcolor='blue', background='black', bordercolor='blue', darkcolor='black', focusfill='blue', foreground='blue', fieldbackground='black', selectforeground='blue', highlight='blue')
-    root.option_add('*TCombobox*Listbox.selectBackground', 'blue')
-    root.option_add('*TCombobox*Listbox.selectForeground', 'white')
-    style.configure("TScrollbar", troughcolor="blue")
+    root['bg']=bl
+    style.configure("TCombobox", arrowcolor=bu, bordercolor=bu, darkcolor=bl, focusfill=bu, selectforeground=bu)
+    style.configure("TButton", arrowcolor=bu, bordercolor=bu, darkcolor=bl, focusfill=bu, selectforeground=bu)
+    style.configure("TScrollbar", arrowcolor=bu, bordercolor=bu, darkcolor=bl, focusfill=bu, foreground=bu, selectforeground=bu, highlight=bu)
+    style.configure("TFrame"+"TLabel", arrowcolor=bu, bordercolor=bu, darkcolor=bl, focusfill=bu, foreground=bu, selectforeground=bu, highlight=bu)
+    root.option_add('*TCombobox*Listbox.selectBackground', bu)
+    style.configure("TScrollbar", troughcolor=bu)
+    night()
 
     cwd = os.getcwd()
     save1 = cwd+'/.Alex/Images/'
@@ -79,33 +99,9 @@ def alexander():
         filetypes = (('text files', '*.txt'), ('All files', '*.*'))
         f = filedialog.asksaveasfile(mode='w', defaultextension=".txt")
         f.write(inputtxt.get(1.0, "end-1c"))
-    def night():
-        style= ttk.Style()
-        style.theme_use('alt')
-        root['bg']='black'
-        file_menu = Menu(menubar, background='black', activeforeground='black')
-        style.configure("TCombobox", background='black', foreground='white', fieldbackground='black')
-        style.configure("TButton", background='black', foreground='white', fieldbackground='black')
-        style.configure("TFrame", background='black', fieldbackground='black')
-        style.configure("TScrollbar", background='black', fieldbackground='black')
-        style.configure("TLabel", background='black', fieldbackground='black')
-        root.option_add('*TCombobox*Listbox.selectBackground', 'blue')
-        root.option_add('*TCombobox*Listbox.selectForeground', 'black')
-    def day():
-        style= ttk.Style()
-        style.theme_use('alt')
-        root['bg']='white'
-        menubar = Menu(root, fg='white', bg='blue')
-        file_menu = Menu(menubar, background='white', activeforeground='white')
-        style.configure("TCombobox", background='white', foreground='blue', fieldbackground='white')
-        style.configure("TButton", background='white', foreground='blue', fieldbackground='white')
-        style.configure("TFrame", background='white', fieldbackground='white')
-        style.configure("TScrollbar", background='white', fieldbackground='white')
-        style.configure("TLabel", background='white', fieldbackground='white')
-        root.option_add('*TCombobox*Listbox.selectBackground', 'blue')
-        root.option_add('*TCombobox*Listbox.selectForeground', 'white')
-    file_menu = Menu(menubar, background='black', foreground='blue', activebackground='blue', activeforeground='white')
-    options = Menu(menubar, background='black', foreground='blue', activebackground='blue', activeforeground='white')
+
+    file_menu = Menu(menubar, background=bl, foreground=bu, activebackground=bu, activeforeground=wh)
+    options = Menu(menubar, background=bl, foreground=bu, activebackground=bu, activeforeground=wh)
     menubar.add_cascade(label=File, menu=file_menu)
     menubar.add_cascade(label=Prefrences, menu=options)
     file_menu.add_command(label=Save, command=savefiles)
@@ -115,24 +111,24 @@ def alexander():
     options.add_command(label=DayM, command=day)
 
     box = ['Afrikaans', 'Albanian', 'Arabic', 'Armenian', 'Azerbaijani', 'Basque', 'Belarusian', 'Bengali', 'Bosnian', 'Bulgarian', 'Burmese', 'Catalan', 'Cebuano', 'Chichewa', 'Chinese Simplified', 'Chinese Traditional', 'Corsican', 'Croatian', 'Czech', 'Danish', 'Dutch', 'English', 'Esperanto',  'Estonian', 'Filipino', 'Finnish', 'French', 'Frisian', 'Galician', 'Georgian', 'German', 'Greek', 'Gujarati', 'Haitian Creole', 'Hausa', 'Hawaiian', 'Hebrew', 'Hindi', 'Hmong', 'Hungarian', 'Icelandic', 'Igbo', 'Indonesian', 'Irish', 'Italian', 'Japanese', 'Javanese', 'Kannada', 'Kazakh', 'Khmer', 'Korean', 'Kurdish', 'Kyrgyz', 'Lao', 'Latin', 'Latvian', 'Lithuanian',  'Luxembourgish', 'Macedonian', 'Malay', 'Malayalam', 'Malagasy', 'Maltese', 'Maori', 'Marathi',  'Mongolian',  'Nepali', 'Norwegian', 'Odia', 'Pashto', 'Persian', 'Polish',  'Portuguese', 'Punjabi', 'Romanian', 'Russian', 'Samoan', 'Scots Gaelic', 'Serbian', 'Sesotho', 'Shona', 'Sindhi', 'Sinhala', 'Slovak', 'Slovenian', 'Somali', 'Spanish', 'Sundanese', 'Swahili', 'Swedish', 'Tajik', 'Tamil', 'Telugu', 'Thai', 'Turkish', 'Ukrainian', 'Urdu', 'Uyghur', 'Uzbek', 'Vietnamese', 'Welsh', 'Xhosa', 'Yiddish', 'Yoruba', 'Zulu']
-    languages = {'Afrikaans': 'af', 'Albanian': 'sq', 'Armenian': 'hy', 'Azerbaijani': 'az', 'Basque': 'eu', 'Belarusian': 'be', 'Bengali': 'bn', 'Bosnian': 'bs', 'Bulgarian': 'bg', 'Burmese': 'bg', 'Catalan': 'ca', 'Cebuano': 'ceb', 'Chichewa': 'ny', 'Chinese-Simplified': 'zh-cn', 'Chinese-Traditional': 'zh-tw', 'Corsican': 'co', 'Croatian': 'hr', 'Czech': 'cs', 'Danish': 'da', 'Dutch': 'nl', 'English': 'en', 'Esperanto': 'eo', 'Estonian': 'et', 'Filipino': 'tl', 'Finnish': 'fi', 'French': 'fr', 'Frisian': 'fy', 'Galician': 'gl', 'Georgian': 'ka', 'German': 'de', 'Greek': 'el', 'Gujarati': 'gu', 'Haitian': 'gt', 'Creole': 'ha', 'Hausa': 'haw', 'Hawaiian': 'iw', 'Hebrew': 'he', 'Hindi': 'hi', 'Hmong': 'hmn', 'Hungarian': 'hu', 'Icelandic': 'is', 'Igbo': 'ig', 'Indonesian': 'id', 'Irish': 'ga', 'Italian': 'it', 'Japanese': 'ja', 'Javanese': 'jw', 'Kannada': 'kn', 'Kazakh': 'kk', 'Khmer': 'km', 'Korean': 'ko', 'Kurdish': 'ku', 'Kyrgyz': 'ky', 'Lao': 'lo', 'Latin': 'la', 'Latvian': 'lv', 'Lithuanian': 'lt', 'Luxembourgish': 'lb', 'Macedonian': 'mk', 'Malay': 'mg', 'Malayalam': 'ms', 'Malagasy': 'ml', 'Maltese': 'mt', 'Maori': 'mi', 'Marathi': 'mr', 'Mongolian': 'mn', 'Nepali': 'ne', 'Norwegian': 'no', 'Odia': 'or', 'Pashto': 'ps', 'Persian': 'fa', 'Polish': 'pl', 'Portuguese': 'pt', 'Punjabi': 'pa', 'Romanian': 'ro', 'Russian': 'ru', 'Samoan': 'sm', 'Scots Gaelic': 'gd', 'Serbian': 'sr', 'Sesotho': 'st', 'Shona': 'sn', 'Sindhi': 'sd', 'Sinhala': 'si', 'Slovak': 'sk', 'Slovenian': 'sl', 'Somali': 'so', 'Spanish': 'es', 'Sundanese': 'su', 'Swahili': 'sw', 'Swedish': 'sv', 'Tajik': 'tg', 'Tamil': 'ta', 'Telugu': 'te', 'Thai': 'th', 'Turkish': 'tr', 'Ukrainian': 'uk', 'Urdu': 'ur', 'Uyghur': 'ug', 'Uzbek': 'uz', 'Vietnamese': 'vi', 'Welsh': 'cy', 'Xhosa': 'xh', 'Yiddish': 'yi', 'Yoruba': 'yo', 'Zulu': 'zu'}
+    languages = {'Arabic':'ar','Afrikaans': 'af', 'Albanian': 'sq', 'Armenian': 'hy', 'Azerbaijani': 'az', 'Basque': 'eu', 'Belarusian': 'be', 'Bengali': 'bn', 'Bosnian': 'bs', 'Bulgarian': 'bg', 'Burmese': 'bg', 'Catalan': 'ca', 'Cebuano': 'ceb', 'Chichewa': 'ny', 'Chinese-Simplified': 'zh-cn', 'Chinese-Traditional': 'zh-tw', 'Corsican': 'co', 'Croatian': 'hr', 'Czech': 'cs', 'Danish': 'da', 'Dutch': 'nl', 'English': 'en', 'Esperanto': 'eo', 'Estonian': 'et', 'Filipino': 'tl', 'Finnish': 'fi', 'French': 'fr', 'Frisian': 'fy', 'Galician': 'gl', 'Georgian': 'ka', 'German': 'de', 'Greek': 'el', 'Gujarati': 'gu', 'Haitian': 'gt', 'Creole': 'ha', 'Hausa': 'haw', 'Hawaiian': 'iw', 'Hebrew': 'he', 'Hindi': 'hi', 'Hmong': 'hmn', 'Hungarian': 'hu', 'Icelandic': 'is', 'Igbo': 'ig', 'Indonesian': 'id', 'Irish': 'ga', 'Italian': 'it', 'Japanese': 'ja', 'Javanese': 'jw', 'Kannada': 'kn', 'Kazakh': 'kk', 'Khmer': 'km', 'Korean': 'ko', 'Kurdish': 'ku', 'Kyrgyz': 'ky', 'Lao': 'lo', 'Latin': 'la', 'Latvian': 'lv', 'Lithuanian': 'lt', 'Luxembourgish': 'lb', 'Macedonian': 'mk', 'Malay': 'mg', 'Malayalam': 'ms', 'Malagasy': 'ml', 'Maltese': 'mt', 'Maori': 'mi', 'Marathi': 'mr', 'Mongolian': 'mn', 'Nepali': 'ne', 'Norwegian': 'no', 'Odia': 'or', 'Pashto': 'ps', 'Persian': 'fa', 'Polish': 'pl', 'Portuguese': 'pt', 'Punjabi': 'pa', 'Romanian': 'ro', 'Russian': 'ru', 'Samoan': 'sm', 'Scots Gaelic': 'gd', 'Serbian': 'sr', 'Sesotho': 'st', 'Shona': 'sn', 'Sindhi': 'sd', 'Sinhala': 'si', 'Slovak': 'sk', 'Slovenian': 'sl', 'Somali': 'so', 'Spanish': 'es', 'Sundanese': 'su', 'Swahili': 'sw', 'Swedish': 'sv', 'Tajik': 'tg', 'Tamil': 'ta', 'Telugu': 'te', 'Thai': 'th', 'Turkish': 'tr', 'Ukrainian': 'uk', 'Urdu': 'ur', 'Uyghur': 'ug', 'Uzbek': 'uz', 'Vietnamese': 'vi', 'Welsh': 'cy', 'Xhosa': 'xh', 'Yiddish': 'yi', 'Yoruba': 'yo', 'Zulu': 'zu'}
     spoken = {'Arabic':'ar', 'Pashto':'ar', 'Persian':'ar', 'Punjabi':'ar', 'Sindhi':'ar', 'Somali':'ar', 'Sundanese':'ar', 'Urdu':'ar', 'Uyghur':'ar', 'Azerbaijani':'ru', 'Belarusian':'ru', 'Kazakh':'ru', 'Kyrgyz':'ru', 'Mongolian':'ru', 'Russian':'ru', 'Tajik':'ru', 'Uzbek':'ru', 'Basque':'es', 'Spanish':'es', 'Catalan':'ca', 'Galician':'ca', 'Filipino':'tl', 'Cebuano':'tl', 'Italian':'it', 'Corsican':'it', 'German':'de', 'Frisian':'de', 'Luxembourgish':'de', 'Vietnamese':'vi', 'Hmong':'vi', 'Thai':'th', 'Malay':'th', 'Latin':'la', 'Maltese':'la', 'Latvian':'lv', 'Lithuanian':'lv', 'Javanese':'jw', 'Hawaiian':'jw', 'Samoan':'jw', 'Maori':'jw', 'Slovak':'sk', 'Slovenian':'sk', 'Welsh':'cy', 'Scots Gaelic':'cy', 'Irish':'cy', 'Swahili':'sw', 'Chichewa':'sw', 'Shona':'sw', 'Xhosa':'sw', 'Zulu':'sw', 'Haitian Creole':'fr', 'French':'fr', 'Afrikaans': 'af', 'Albanian': 'sq', 'Armenian': 'hy', 'Bengali': 'bn', 'Bosnian': 'bs', 'Bulgarian': 'bg', 'Chinese Simplified': 'zh-cn', 'Chinese Traditional': 'zh-tw', 'Croatian': 'hr', 'Czech': 'cs', 'Danish': 'da', 'Dutch': 'nl', 'Esperanto': 'eo', 'English': 'en', 'Estonian': 'et', 'French': 'fr', 'Finnish': 'fi', 'Greek': 'el', 'Gujarati': 'gu', 'Hindi': 'hi', 'Hungarian': 'hu', 'Icelandic': 'is', 'Indonesian': 'id', 'Japanese': 'ja', 'Kannada': 'kn', 'Khmer': 'km', 'Korean': 'ko', 'Lao': 'lo', 'Macedonian': 'mk', 'Malayalam': 'ml', 'Burmese': 'my', 'Nepali': 'ne', 'Norwegian': 'no', 'Polish': 'pl', 'Portuguese': 'pt', 'Romanian': 'ro', 'Serbian': 'sr', 'Sinhala': 'si', 'Swedish': 'sv', 'Tamil': 'ta', 'Telugu': 'te', 'Turkish': 'tr', 'Ukrainian': 'uk'}
 
     combo = ttk.Combobox(frm, values = box)
     combo.set(SelectL)
     combo.pack(fill="x")
 
-    inputtxt = scrolledtext.ScrolledText(root, height=10, width=35, fg='blue', bg='white', wrap='word', undo="true", foreground='blue', selectforeground='blue')
+    inputtxt = scrolledtext.ScrolledText(root, height=10, width=35, fg=bu, bg=wh, wrap='word', undo="true", foreground=bu, selectforeground=bu)
     inputtxt.focus()
     inputtxt.pack(fill="both", expand='true')
-    inputtxt2 = tk.Text(root, height=1, fg='blue', bg='blue', wrap='word', undo="true", foreground='white', selectforeground='blue')
+    inputtxt2 = tk.Text(root, height=1, fg=bu, bg=bu, wrap='word', undo="true", foreground=wh, selectforeground=bu)
 
     def soundcall():
         inputtxt2.pack_forget()
         V = vlc.MediaPlayer(save2)
         V.play()
         inputtxt.tag_add("start", "1.0","end-1c")
-        inputtxt.tag_configure("start",background="black", foreground= "white")
+        inputtxt.tag_configure("start",background=bl, foreground= wh)
 
     def transcall():
         inputtxt2.pack_forget()
@@ -205,7 +201,7 @@ def alexander():
             inputtxt2.focus()
         webbrowser.open((inputtxt2.get(1.0, "end-1c")), new=2)
 
-    se = Menu(root, tearoff = 0, background='black', foreground='blue', activebackground='blue', activeforeground='white')
+    se = Menu(root, tearoff = 0, background=bl, foreground=bu, activebackground=bu, activeforeground=wh)
     se.add_command(label = Sear, command = lookup)
 
     def popup(event):
