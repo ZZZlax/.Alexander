@@ -50,9 +50,9 @@ def alexander():
     DayM = (day.text)
     NightM = (nit.text)
 
-    bl = "Black"
-    bu = "Blue"
-    wh = "White"
+    bl = "#000000"
+    bu = "#1f9dff"
+    wh = "#ffffff"
 
     root = Tk()
     menubar = Menu(root, fg=wh, bg=bu)
@@ -64,26 +64,18 @@ def alexander():
     def night():
         root['bg']= bl
         file_menu = Menu(menubar, background=bl, activeforeground=bl)
-        style.configure("TCombobox", background=bl, foreground=wh, fieldbackground=bl)
-        style.configure("TButton", background=bl, foreground=wh, fieldbackground=bl)
-        style.configure("TLabel"+"TFrame", background=bl, fieldbackground=bl)
-        style.configure("TScrollbar", background=bl, fieldbackground=bl)
+        style.configure(".", background=bl, foreground=wh, fieldbackground=bl)
         root.option_add('*TCombobox*Listbox.selectForeground', bl)
+        root.option_add('*TScrolledText*Listbox.selectForeground', bl)
     def day():
         root['bg']= wh
         file_menu = Menu(menubar, background=wh, activeforeground=wh)
-        style.configure("TCombobox", background=wh, foreground=bu, fieldbackground=wh)
-        style.configure("TButton", background=wh, foreground=bu, fieldbackground=wh)
-        style.configure("TFrame"+"TLabel", background=wh, fieldbackground=wh)
-        style.configure("TScrollbar", background=wh, fieldbackground=wh)
+        style.configure(".", background=wh, foreground=bu, fieldbackground=wh)
         root.option_add('*TCombobox*Listbox.selectForeground', wh)
     style= ttk.Style()
     style.theme_use('alt')
     root['bg']=bl
-    style.configure("TCombobox", arrowcolor=bu, bordercolor=bu, darkcolor=bl, focusfill=bu, selectforeground=bu)
-    style.configure("TButton", arrowcolor=bu, bordercolor=bu, darkcolor=bl, focusfill=bu, selectforeground=bu)
-    style.configure("TScrollbar", arrowcolor=bu, bordercolor=bu, darkcolor=bl, focusfill=bu, foreground=bu, selectforeground=bu, highlight=bu)
-    style.configure("TFrame"+"TLabel", arrowcolor=bu, bordercolor=bu, darkcolor=bl, focusfill=bu, foreground=bu, selectforeground=bu, highlight=bu)
+    style.configure(".", arrowcolor=bu, bordercolor=bu, darkcolor=bl, focusfill=bu, foreground=bu, selectforeground=bu, highlight=bu)
     root.option_add('*TCombobox*Listbox.selectBackground', bu)
     style.configure("TScrollbar", troughcolor=bu)
     night()
