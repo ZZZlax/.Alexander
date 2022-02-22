@@ -1,9 +1,7 @@
 def ins():
     import subprocess, os
-    def install():
-        subprocess.check_call(['apt', 'install', 'python3-pip', 'python3-tk', 'python3-vlc'], user = "root")
-        subprocess.check_call(['pip3', 'install', 'googlesearch-python', 'wikipedia', 'speechrecognition', 'pyttsx3', 'gtts', 'googletrans==4.0.0-rc1'])
-    install()
+    subprocess.check_call(['apt', 'install', 'python3-pip', 'python3-tk', 'python3-vlc'], user = "root")
+    subprocess.check_call(['pip3', 'install', 'googlesearch-python', 'wikipedia', 'speechrecognition', 'pyttsx3', 'gtts', 'googletrans==4.0.0-rc1'])
     dsktp = input("Create Desktop Item? [y/n]: ")
     if dsktp == "Y" or dsktp == "y":
         cwd = os.getcwd()
