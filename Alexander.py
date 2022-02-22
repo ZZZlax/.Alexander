@@ -18,6 +18,36 @@ def ins():
         pass
 
 def alexander():
+    A = (str(locale.getdefaultlocale())).strip("( ) ' ' , _ -")
+    B = (A[:2])
+    key = ['af', 'sq', 'ar', 'hy', 'az', 'eu', 'be', 'bn', 'bs', 'bg', 'ca', 'ceb', 'ny', 'zh-cn', 'zh-tw', 'co', 'hr', 'cs', 'da', 'nl', 'en', 'eo', 'et', 'tl', 'fi', 'fr', 'fy', 'gl', 'ka', 'de', 'el', 'gu', 'gt', 'ha', 'iw', 'he', 'hi', 'hmn', 'hu', 'is', 'ig', 'id', 'ga', 'it', 'ja', 'jw', 'kn', 'kk', 'km', 'ko', 'ku', 'ky', 'lo', 'la', 'lv', 'lt', 'lb', 'mk', 'mg', 'ms', 'ml', 'mt', 'mi', 'mr', 'mn', 'ne', 'no', 'or', 'ps', 'fa', 'pl', 'pt', 'pa', 'ro', 'ru', 'sm', 'gd', 'sr', 'st', 'sn', 'sd', 'si', 'sk', 'sl', 'so', 'es', 'su', 'sw', 'sv', 'tg', 'ta', 'te', 'th', 'tr', 'uk', 'ur', 'ug', 'uz', 'vi', 'cy', 'xh', 'yi', 'yo', 'zu']
+    defaultlang = []
+    if B in key:
+        defaultlang = B
+    else:
+        defaultlang = "zh-tw"
+
+    translator=Translator()
+
+    ser = translator.translate("Search", defaultlang)
+    sel = translator.translate("Select Language", defaultlang)
+    fil = translator.translate("File", defaultlang)
+    pre = translator.translate("Prefrences", defaultlang)
+    sav = translator.translate("Save", defaultlang)
+    opn = translator.translate("Open", defaultlang)
+    exi = translator.translate("Exit", defaultlang)
+    day = translator.translate("Day Mode", defaultlang)
+    nit = translator.translate("Night Mode", defaultlang)
+    Sear = (ser.text)
+    SelectL = (sel.text)
+    File = (fil.text)
+    Prefrences = (pre.text)
+    Save = (sav.text)
+    Open = (opn.text)
+    Exit = (exi.text)
+    DayM = (day.text)
+    NightM = (nit.text)
+
     root = Tk()
     menubar = Menu(root, fg='white', bg='blue')
     root.title('Вавилонска кула')
@@ -78,17 +108,17 @@ def alexander():
 
     file_menu = Menu(menubar, background='black', foreground='blue', activebackground='blue', activeforeground='white')
     options = Menu(menubar, background='black', foreground='blue', activebackground='blue', activeforeground='white')
-    menubar.add_cascade(label="File", menu=file_menu)
-    menubar.add_cascade(label="Prefrences", menu=options)
-    file_menu.add_command(label='Save', command=savefiles)
-    file_menu.add_command(label='Open', command=browsefiles)
-    file_menu.add_command(label='Exit', command=root.destroy)
-    options.add_command(label='Night Mode', command=night)
-    options.add_command(label='Day Mode', command=day)
+    menubar.add_cascade(label=File, menu=file_menu)
+    menubar.add_cascade(label=Prefrences, menu=options)
+    file_menu.add_command(label=Save, command=savefiles)
+    file_menu.add_command(label=Open, command=browsefiles)
+    file_menu.add_command(label=Exit, command=root.destroy)
+    options.add_command(label=NightM, command=night)
+    options.add_command(label=DayM, command=day)
 
     box = ['Afrikaans', 'Albanian', 'Arabic', 'Armenian', 'Azerbaijani', 'Basque', 'Belarusian', 'Bengali', 'Bosnian', 'Bulgarian', 'Burmese', 'Catalan', 'Cebuano', 'Chichewa', 'Chinese Simplified', 'Chinese Traditional', 'Corsican', 'Croatian', 'Czech', 'Danish', 'Dutch', 'English', 'Esperanto',  'Estonian', 'Filipino', 'Finnish', 'French', 'Frisian', 'Galician', 'Georgian', 'German', 'Greek', 'Gujarati', 'Haitian Creole', 'Hausa', 'Hawaiian', 'Hebrew', 'Hindi', 'Hmong', 'Hungarian', 'Icelandic', 'Igbo', 'Indonesian', 'Irish', 'Italian', 'Japanese', 'Javanese', 'Kannada', 'Kazakh', 'Khmer', 'Korean', 'Kurdish', 'Kyrgyz', 'Lao', 'Latin', 'Latvian', 'Lithuanian',  'Luxembourgish', 'Macedonian', 'Malay', 'Malayalam', 'Malagasy', 'Maltese', 'Maori', 'Marathi',  'Mongolian',  'Nepali', 'Norwegian', 'Odia', 'Pashto', 'Persian', 'Polish',  'Portuguese', 'Punjabi', 'Romanian', 'Russian', 'Samoan', 'Scots Gaelic', 'Serbian', 'Sesotho', 'Shona', 'Sindhi', 'Sinhala', 'Slovak', 'Slovenian', 'Somali', 'Spanish', 'Sundanese', 'Swahili', 'Swedish', 'Tajik', 'Tamil', 'Telugu', 'Thai', 'Turkish', 'Ukrainian', 'Urdu', 'Uyghur', 'Uzbek', 'Vietnamese', 'Welsh', 'Xhosa', 'Yiddish', 'Yoruba', 'Zulu']
     combo = ttk.Combobox(frm, values = box)
-    combo.set("Select Language")
+    combo.set(SelectL)
     combo.pack(fill="x")
 
     inputtxt = scrolledtext.ScrolledText(root, height=10, width=35, fg='blue', bg='white', wrap='word', undo="true", foreground='blue', selectforeground='blue')
@@ -100,8 +130,6 @@ def alexander():
         inputtxt2.pack_forget()
         V = vlc.MediaPlayer(save2)
         V.play()
-
-    translator=Translator()
 
     def transcall():
         inputtxt2.pack_forget()
@@ -267,7 +295,7 @@ def alexander():
         webbrowser.open((inputtxt2.get(1.0, "end-1c")), new=2)
 
     m = Menu(root, tearoff = 0)
-    m.add_command(label ="Search", command= lookup)
+    m.add_command(label = Sear, command = lookup)
 
     def popup(event):
         try:
@@ -289,7 +317,7 @@ def alexander():
 
 if __name__ == "__main__":
     try:
-        import gtts, googletrans, vlc, pyttsx3, os, os.path, wikipedia, speech_recognition, pprint, webbrowser
+        import gtts, googletrans, vlc, pyttsx3, os, os.path, wikipedia, speech_recognition, pprint, webbrowser, locale
         import tkinter as tk
         from tkinter import Tk, PhotoImage, ttk, Menu, filedialog, scrolledtext
         from googletrans import Translator, constants
@@ -298,7 +326,7 @@ if __name__ == "__main__":
         alexander()
     except:
         ins()
-        import gtts, googletrans, vlc, pyttsx3, os, os.path, wikipedia, speech_recognition, pprint, webbrowser
+        import gtts, googletrans, vlc, pyttsx3, os, os.path, wikipedia, speech_recognition, pprint, webbrowser, locale
         import tkinter as tk
         from tkinter import Tk, PhotoImage, ttk, Menu, filedialog, scrolledtext
         from googletrans import Translator, constants
