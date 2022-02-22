@@ -119,11 +119,6 @@ def alexander():
         inputtxt2.pack_forget()
         V = vlc.MediaPlayer(save2)
         V.play()
-        inputtxt.tag_add("start", "1.0","end-1c")
-        inputtxt.tag_configure("start",background=bu, foreground= bl)
-        Y = inputtxt.get(1.0, "end-1c")
-        root.clipboard_clear()
-        root.clipboard_append(Y)
 
     def transcall():
         inputtxt2.pack_forget()
@@ -145,8 +140,10 @@ def alexander():
                 Button.pack()
             inputtxt.delete(1.0, "end-1c")
             inputtxt.insert(1.0, translation.text)
+            inputtxt.tag_add("start", "1.0","end-1c")
+            inputtxt.tag_configure("start",background=bu, foreground= bl)
             root.clipboard_clear()
-            root.clipboard_append(Y)
+            root.clipboard_append(translation.text)
             inputtxt.focus()
 
     def speaktext():
@@ -196,6 +193,8 @@ def alexander():
             inputtxt2.delete(1.0, "end-1c")
             inputtxt2.insert(1.0, h)
             inputtxt2.focus()
+            inputtxt2.tag_add("start", "1.0","end-1c")
+            inputtxt2.tag_configure("start",background=wh, foreground= bl)
             root.clipboard_clear()
             root.clipboard_append(h)
         webbrowser.open((inputtxt2.get(1.0, "end-1c")), new=2)
