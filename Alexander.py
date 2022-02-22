@@ -73,12 +73,11 @@ def alexander():
     def browsefiles():
         filetypes = (('text files', '*.txt'), ('All files', '*.*'))
         f = filedialog.askopenfile(filetypes=filetypes)
-        inputtxt.insert('1.0', f.readlines())
+        inputtxt.insert(1.0, f.readlines())
     def savefiles():
         filetypes = (('text files', '*.txt'), ('All files', '*.*'))
         f = filedialog.asksaveasfile(mode='w', defaultextension=".txt")
         f.write(inputtxt.get(1.0, "end-1c"))
-
     def night():
         style= ttk.Style()
         style.theme_use('alt')
@@ -135,7 +134,7 @@ def alexander():
         X = combo.get()
         if X == SelectL:
             inputtxt.delete(1.0, "end-1c")
-            inputtxt.insert('1.0', SelectL)
+            inputtxt.insert(1.0, SelectL)
             pass
         else:
             Y = inputtxt.get(1.0, "end-1c")
@@ -217,7 +216,7 @@ def alexander():
                 Button.pack()
                 tts.save(save3)
             inputtxt.delete(1.0, "end-1c")
-            inputtxt.insert('1.0', translation.text)
+            inputtxt.insert(1.0, translation.text)
 
     def speaktext():
         snr = translator.translate("Speech not recognized", defaultlang)
@@ -239,7 +238,7 @@ def alexander():
             except speech_recognition.RequestError as e:
                 speech = (CNF)
         inputtxt.delete(1.0, "end-1c")
-        inputtxt.insert('1.0', speech)
+        inputtxt.insert(1.0, speech)
 
     def wikisearch():
         inputtxt2.pack_forget()
@@ -253,11 +252,11 @@ def alexander():
             except:
                 wiki = "404"
             inputtxt.delete(1.0, "end-1c")
-            inputtxt.insert('1.0', wiki)
+            inputtxt.insert(1.0, wiki)
         except:
             sellang = Error
             inputtxt.delete(1.0, "end-1c")
-            inputtxt.insert('1.0', sellang)
+            inputtxt.insert(1.0, sellang)
             pass
 
     def lookup():
@@ -266,17 +265,17 @@ def alexander():
         for j in search(query):
             h = j.split()
             inputtxt2.delete(1.0, "end-1c")
-            inputtxt2.insert('1.0', h)
+            inputtxt2.insert(1.0, h)
         webbrowser.open((inputtxt2.get(1.0, "end-1c")), new=2)
 
-    m = Menu(root, tearoff = 0)
-    m.add_command(label = Sear, command = lookup)
+    se = Menu(root, tearoff = 0, background='black', foreground='blue', activebackground='blue', activeforeground='white')
+    se.add_command(label = Sear, command = lookup)
 
     def popup(event):
         try:
-            m.tk_popup(event.x_root, event.y_root)
+            se.tk_popup(event.x_root, event.y_root)
         finally:
-            m.grab_release()
+            se.grab_release()
     inputtxt.bind("<Button-3>", popup)
 
     btn1 = PhotoImage(file = save1+"Alex.png")
