@@ -120,7 +120,10 @@ def alexander():
         V = vlc.MediaPlayer(save2)
         V.play()
         inputtxt.tag_add("start", "1.0","end-1c")
-        inputtxt.tag_configure("start",background=bl, foreground= wh)
+        inputtxt.tag_configure("start",background=bu, foreground= bl)
+        Y = inputtxt.get(1.0, "end-1c")
+        root.clipboard_clear()
+        root.clipboard_append(Y)
 
     def transcall():
         inputtxt2.pack_forget()
@@ -142,6 +145,8 @@ def alexander():
                 Button.pack()
             inputtxt.delete(1.0, "end-1c")
             inputtxt.insert(1.0, translation.text)
+            root.clipboard_clear()
+            root.clipboard_append(Y)
             inputtxt.focus()
 
     def speaktext():
@@ -191,6 +196,8 @@ def alexander():
             inputtxt2.delete(1.0, "end-1c")
             inputtxt2.insert(1.0, h)
             inputtxt2.focus()
+            root.clipboard_clear()
+            root.clipboard_append(h)
         webbrowser.open((inputtxt2.get(1.0, "end-1c")), new=2)
 
     se = Menu(root, tearoff = 0, background=bl, foreground=bu, activebackground=bu, activeforeground=wh)
@@ -216,7 +223,7 @@ def alexander():
 
 if __name__ == "__main__":
     try:
-        import gtts, googletrans, vlc, pyttsx3, os, os.path, wikipedia, speech_recognition, pprint, webbrowser, locale
+        import gtts, googletrans, vlc, pyttsx3, os, os.path, wikipedia, speech_recognition, pprint, webbrowser, locale, sys
         import tkinter as tk
         from tkinter import Tk, PhotoImage, ttk, Menu, filedialog, scrolledtext
         from googletrans import Translator, constants
@@ -225,7 +232,7 @@ if __name__ == "__main__":
         alexander()
     except:
         ins()
-        import gtts, googletrans, vlc, pyttsx3, os, os.path, wikipedia, speech_recognition, pprint, webbrowser, locale
+        import gtts, googletrans, vlc, pyttsx3, os, os.path, wikipedia, speech_recognition, pprint, webbrowser, locale, sys
         import tkinter as tk
         from tkinter import Tk, PhotoImage, ttk, Menu, filedialog, scrolledtext
         from googletrans import Translator, constants
