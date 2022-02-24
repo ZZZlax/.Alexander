@@ -1,5 +1,7 @@
 # Alex
 
+## I am teaching myself** python. This is my first attempt coding anything. ANY advice or critique, no matter how blunt, is very much appreciated. Feel free to contact me at theoriginalashketchum@protonmail.com with any input.
+
 Alexander is a language learning tool designed for any skil level. Translate languages, search wikipedia in other languages, or search google in your browsers defined region(s), and learn to pronounce words from native speakers through the speech module.
 
 Future updates include a system for highlighting Nouns, Verbs, and the like as well as scroll over definitions and more.
@@ -11,3 +13,7 @@ Future updates include a system for highlighting Nouns, Verbs, and the like as w
 2. The first time you run Alexander you will need to give it root permissions in order to install all modules. To do so open the terminal and copy/paste or type this command:
 
 sudo python3 /home/[username]/.Alex/setup.py install
+
+## **except:
+##      Leon.
+##      ty.
