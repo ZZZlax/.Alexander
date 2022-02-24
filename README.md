@@ -4,17 +4,10 @@ Alexander is a language learning tool designed for any skil level. Translate lan
 
 Future updates include a system for highlighting Nouns, Verbs, and the like as well as scroll over definitions and more.
 
-1. You will need to install python individually. On Ubuntu you may doing so by running the following command:
+1. You will need to install python individually. On Ubuntu you may doing so by running the following command: 'sudo apt install python3' or by downloading from the website: https://www.python.org/downloads/.
 
-sudo apt install python3
-
-or by downloading from the website
-https://www.python.org/downloads/
+(Note: Depending on your version of python you may also need to install tkinter seperatly: On ubuntu you may do so by executing the following command: 'sudo apt install python3-tk')
 
 2. The first time you run Alexander you will need to give it root permissions in order to install all modules. To do so open the terminal and copy/paste or type this command:
 
-sudo python3 /home/[username]/Alex/Alexander.py
-
-3. If you chose to create a Desktop Item you must enable launching. To do so right click on the "Alexander.desktop" created by the installer. Scroll down to "Allow Launching" and click.
-
-You may now launch Alexander from the desktop by clicking. You may also drag and drop the icon into a bar on your systems desktop.
+sudo python3 /home/[username]/.Alex/setup.py install
