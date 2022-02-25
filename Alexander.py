@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 def alexander():
 
     ## determine default language by extracting first two letters from os language setting.
@@ -208,6 +210,7 @@ def alexander():
             input_text.focus()
 
     def record_voice():
+        X = combo.get()
         input_text2.pack_forget()
         engine = pyttsx3.init('espeak')
         engine.runAndWait()
@@ -216,7 +219,7 @@ def alexander():
             r.adjust_for_ambient_noise(source, 2)
             audio = r.listen(source)
             try:
-                speech = r.recognize_google(audio)
+                speech = r.recognize_google(audio, language=languages[X])
                 engine.say(speech)
             except speech_recognition.UnknownValueError:
                 speech =(SNR)
@@ -277,5 +280,3 @@ if __name__ == "__main__":
         from googlesearch import search
         from urllib.request import urlopen
         alexander()
-    except:
-        print("Not set up. Please execute command: 'sudo python3 /home/[username]/.Alex/setup.py install'")
