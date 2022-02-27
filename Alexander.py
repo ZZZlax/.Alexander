@@ -272,7 +272,6 @@ def alexander():
     os.unlink(tempmp3file)
 
 if __name__ == "__main__":
-    try:
         import gtts, googletrans, vlc, pyttsx3, os, os.path, wikipedia, speech_recognition, pprint, webbrowser, locale, sys, tempfile
         import tkinter as tk
         from tkinter import Tk, PhotoImage, ttk, Menu, filedialog, scrolledtext
