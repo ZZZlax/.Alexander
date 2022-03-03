@@ -1,17 +1,23 @@
 #!/usr/bin/python
 
+import gtts, vlc, pyttsx3, os, os.path, wikipedia, speech_recognition, webbrowser, locale, tempfile, atexit
+import tkinter as tk; from tkinter import Tk, PhotoImage, ttk, Menu, filedialog, scrolledtext
+from googletrans import Translator; from googlesearch import search
+
 def clean():
     os.unlink(tempmp3file)
 
 def alexander():
-    A = str(locale.getdefaultlocale()).strip("( ) ' ' , _ -")[:2]
-    key = {'af', 'sq', 'ar', 'hy', 'az', 'eu', 'be', 'bn', 'bs', 'bg', 'ca', 'ny', 'co', 'hr', 'cs', 'da', 'nl', 'en', 'eo', 'et', 'tl', 'fi', 'fr', 'fy', 'gl', 'ka', 'de', 'el', 'gu', 'gt', 'ha', 'iw', 'he', 'hi', 'hmn', 'hu', 'is', 'ig', 'id', 'ga', 'it', 'ja', 'jw', 'kn', 'kk', 'km', 'ko', 'ku', 'ky', 'lo', 'la', 'lv', 'lt', 'lb', 'mk', 'mg', 'ms', 'ml', 'mt', 'mi', 'mr', 'mn', 'ne', 'no', 'or', 'ps', 'fa', 'pl', 'pt', 'pa', 'ro', 'ru', 'sm', 'gd', 'sr', 'st', 'sn', 'sd', 'si', 'sk', 'sl', 'so', 'es', 'su', 'sw', 'sv', 'tg', 'ta', 'te', 'th', 'tr', 'uk', 'ur', 'ug', 'uz', 'vi', 'cy', 'xh', 'yi', 'yo', 'zu'}
-    dfl = []
-    if A in key: dfl = A
-    else: dfl = "zh-tw"
+    try:
+        A = str(locale.getdefaultlocale()).strip("( ) ' ' , _ -")[:2]
+        key = {'af', 'sq', 'ar', 'hy', 'az', 'eu', 'be', 'bn', 'bs', 'bg', 'ca', 'ny', 'co', 'hr', 'cs', 'da', 'nl', 'en', 'eo', 'et', 'tl', 'fi', 'fr', 'fy', 'gl', 'ka', 'de', 'el', 'gu', 'gt', 'ha', 'iw', 'he', 'hi', 'hmn', 'hu', 'is', 'ig', 'id', 'ga', 'it', 'ja', 'jw', 'kn', 'kk', 'km', 'ko', 'ku', 'ky', 'lo', 'la', 'lv', 'lt', 'lb', 'mk', 'mg', 'ms', 'ml', 'mt', 'mi', 'mr', 'mn', 'ne', 'no', 'or', 'ps', 'fa', 'pl', 'pt', 'pa', 'ro', 'ru', 'sm', 'gd', 'sr', 'st', 'sn', 'sd', 'si', 'sk', 'sl', 'so', 'es', 'su', 'sw', 'sv', 'tg', 'ta', 'te', 'th', 'tr', 'uk', 'ur', 'ug', 'uz', 'vi', 'cy', 'xh', 'yi', 'yo', 'zu'}
+        dfl = []
+        if A in key: dfl = A
+        else: dfl = "zh-tw"
+    except: dfl = "en"
     root = Tk()
     bl = "#000000"; bu = "#1f9dff"; wh = "#ffffff"; gr = "#727272"
-    cwd = os.getcwd(); save1 = cwd+'/.Alex/Images/'; tempmp3file = tempfile.mktemp('.mp3')
+    cwd = os.getcwd(); save1 = cwd+'/.Alexander/Images/'; tempmp3file = tempfile.mktemp('.mp3')
     btn1 = PhotoImage(file=save1+"Alex.png"); btn2 = PhotoImage(file=save1+"speak.png"); btn3 = PhotoImage(file=save1+"record.png"); btn4 = PhotoImage(file=save1+"wiki.png")
     root.title('Вавилонска кула'); root.resizable(True, True); root.iconphoto(False, btn1)
     menubar = Menu(root, fg=wh, bg=bu)
@@ -121,8 +127,5 @@ def alexander():
 
 
 if __name__ == "__main__":
-    import gtts, vlc, pyttsx3, os, os.path, wikipedia, speech_recognition, webbrowser, locale, tempfile, atexit
-    import tkinter as tk; from tkinter import Tk, PhotoImage, ttk, Menu, filedialog, scrolledtext
-    from googletrans import Translator; from googlesearch import search
     alexander()
     atexit.register(clean())
