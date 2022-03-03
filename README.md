@@ -6,6 +6,8 @@ Alexander is a language learning tool designed for any skil level. Translate lan
 
 Future updates include a system for highlighting Nouns, Verbs, and the like as well as scroll over definitions and more.
 
+Note: You will have to install tkinter on your own, on Ubuntu this is done by running "sudo apt install python3-tk."
+
 <!--** if pytutorial != understood:
            try:
               google
