@@ -22,7 +22,6 @@ setup_info = dict(
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
     ],
-    install_requires=['googlesearch-python', 'wikipedia', 'speechrecognition', 'pyttsx3', 'gtts', 'googletrans==4.0.0-rc1'],
-)
+    install_requires=['googlesearch-python', 'wikipedia', 'pyttsx3', 'gtts', 'googletrans==4.0.0-rc1', 'locale',  'wikipedia', 'speechrecognition'])
 
 setup(**setup_info)
