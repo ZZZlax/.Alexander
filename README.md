@@ -9,3 +9,5 @@ Translate languages, search wikipedia in other languages, or search google in yo
 Future updates include a system for highlighting Nouns, Verbs, and the like as well as scroll over definitions and more.
 
 ***Note: You will have to install tkinter on your own, on Ubuntu this is done by running "sudo apt install python3-tk."***
+
+***Included is a .zip of all the .py files. You can delete the .py files and call Alexander by running the command "python .Alexander/.Run.zip" to save space
