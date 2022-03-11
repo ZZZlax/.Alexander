@@ -1,30 +1,25 @@
 #!/usr/bin/python
 
-import gtts, vlc, pyttsx3, os, os.path, wikipedia, speech_recognition, webbrowser, locale, tempfile, atexit
-import tkinter as tk; from tkinter import Tk, PhotoImage, ttk, Menu, filedialog, scrolledtext
-from googletrans import Translator; from googlesearch import search
+import gtts, vlc, pyttsx3, os, os.path, wikipedia, speech_recognition, webbrowser, locale, tempfile, atexit; import tkinter as tk; from tkinter import Tk, PhotoImage, ttk, Menu, filedialog, scrolledtext; from googletrans import Translator; from googlesearch import search
 
 def clean():
     os.unlink(tempmp3file)
 
 def alexander():
     try:
-        A = str(locale.getdefaultlocale()).strip("( ) ' ' , _ -")[:2]
-        key = {'af', 'sq', 'ar', 'hy', 'az', 'eu', 'be', 'bn', 'bs', 'bg', 'ca', 'ny', 'co', 'hr', 'cs', 'da', 'nl', 'en', 'eo', 'et', 'tl', 'fi', 'fr', 'fy', 'gl', 'ka', 'de', 'el', 'gu', 'gt', 'ha', 'iw', 'he', 'hi', 'hmn', 'hu', 'is', 'ig', 'id', 'ga', 'it', 'ja', 'jw', 'kn', 'kk', 'km', 'ko', 'ku', 'ky', 'lo', 'la', 'lv', 'lt', 'lb', 'mk', 'mg', 'ms', 'ml', 'mt', 'mi', 'mr', 'mn', 'ne', 'no', 'or', 'ps', 'fa', 'pl', 'pt', 'pa', 'ro', 'ru', 'sm', 'gd', 'sr', 'st', 'sn', 'sd', 'si', 'sk', 'sl', 'so', 'es', 'su', 'sw', 'sv', 'tg', 'ta', 'te', 'th', 'tr', 'uk', 'ur', 'ug', 'uz', 'vi', 'cy', 'xh', 'yi', 'yo', 'zu'}
+        A=str(locale.getdefaultlocale()).strip("()'',_-")[:2]
+        key={'af','sq','ar','hy','az','eu','be','bn','bs','bg','ca','ny','co','hr','cs','da','nl','en','eo','et','tl','fi','fr','fy','gl','ka','de','el','gu','gt','ha','iw','he','hi','hmn','hu','is','ig','id','ga','it','ja','jw','kn','kk','km','ko','ku','ky','lo','la','lv','lt','lb','mk','mg','ms','ml','mt','mi','mr','mn','ne','no','or','ps','fa','pl','pt','pa','ro','ru','sm','gd','sr','st','sn','sd','si','sk','sl','so','es','su','sw','sv','tg','ta','te','th','tr','uk','ur','ug','uz','vi','cy','xh','yi','yo','zu'}
         dfl = []
         if A in key: dfl = A
         else: dfl = "zh-tw"
     except: dfl = "en"
     root = Tk()
     bl = "#000000"; bu = "#1f9dff"; wh = "#ffffff"; gr = "#727272"
-    cwd = os.getcwd(); save1 = cwd+'/.Alexander/Images/'; tempmp3file = tempfile.mktemp('.mp3')
-    btn1 = PhotoImage(file=save1+"Alex.png"); btn2 = PhotoImage(file=save1+"speak.png"); btn3 = PhotoImage(file=save1+"record.png"); btn4 = PhotoImage(file=save1+"wiki.png")
+    cwd = os.getcwd(); save1 = cwd+'/.Alexander/Images/'; tempmp3file = tempfile.mktemp('.mp3'); btn1 = PhotoImage(file=save1+"Alex.png"); btn2 = PhotoImage(file=save1+"speak.png"); btn3 = PhotoImage(file=save1+"record.png"); btn4 = PhotoImage(file=save1+"wiki.png")
     root.title('Вавилонска кула'); root.resizable(True, True); root.iconphoto(False, btn1)
     menubar = Menu(root, fg=wh, bg=bu)
     root.config(menu=menubar)
-    frm = ttk.Frame(root, padding=10).pack()
-    style=ttk.Style()
-    style.theme_use('alt'); root['bg']=bl; style.configure(".", arrowcolor=bu, bordercolor=bu, darkcolor=bl, focusfill=bu, foreground=bu, selectforeground=bu, highlight=bu); root.option_add('*TCombobox*Listbox.selectBackground', bu); style.configure("TScrollbar", troughcolor=bu)
+    frm = ttk.Frame(root, padding=10).pack(); style=ttk.Style(); style.theme_use('alt'); root['bg']=bl; style.configure(".", arrowcolor=bu, bordercolor=bu, darkcolor=bl, focusfill=bu, foreground=bu, selectforeground=bu, highlight=bu); root.option_add('*TCombobox*Listbox.selectBackground', bu); style.configure("TScrollbar", troughcolor=bu)
 
     def night_mode(): root['bg']= bl; style.configure(".", background=bl, foreground=wh, fieldbackground=bl)
     def day_mode():root['bg']= wh; style.configure(".", background=wh, foreground=bu, fieldbackground=wh)
@@ -34,17 +29,7 @@ def alexander():
         filetypes = (('text files', '*.txt'), ('All files', '*.*'))
         f = filedialog.askopenfile(filetypes=filetypes); input_text.insert(1.0, f.readlines())
     def save_files():
-        f = filedialog.asksaveasfile(mode='w', defaultextension=".txt")
-        f.write(input_text.get(1.0, "end-1c"))
-    def google_it():
-        try: query = input_text.get("sel.first", "sel.last")
-        except: query = input_text.get(1.0,"end-1c")
-        input_text2.pack(fill="x")
-        for j in search(query):
-            h = j.split()
-            input_text2.delete(1.0, "end-1c"); input_text2.insert(1.0, h); input_text2.focus()
-            root.clipboard_clear(); root.clipboard_append(h)
-        webbrowser.open(inputtxt2.get(1.0, "end-1c"), new=2)
+        (filedialog.asksaveasfile(mode='w', defaultextension=".txt")).write(input_text.get(1.0, "end-1c"))
     def copy(self):
         try: copy = input_text.get("sel.first", "sel.last")
         except: copy = input_text.get(1.0, "end-1c")
@@ -67,19 +52,15 @@ def alexander():
     err = translator.translate("Error", dfl); Error = (err.text)
     sel = translator.translate("Select Language", dfl); SelectL = (sel.text)
 
-    file_menu = Menu(menubar, background=bl, foreground=bu, activebackground=bu, activeforeground=wh); file_menu.add_command(label=Save, command=save_files); file_menu.add_command(label=Open, command=browse_files)
-    options = Menu(menubar, background=bl, foreground=bu, activebackground=bu, activeforeground=wh); options.add_command(label=NightM, command=night_mode); options.add_command(label=DayM, command=day_mode)
-    se = Menu(root, tearoff=0, background=bl, foreground=bu, activebackground=bu, activeforeground=wh); se.add_command(label=Search, command=google_it)
-    menubar.add_cascade(label=File, menu=file_menu); menubar.add_cascade(label=Prefrences, menu=options)
-    def popup_menu(event):
-        try: se.tk_popup(event.x_root, event.y_root)
-        finally: se.grab_release()
+    file_menu=Menu(menubar,background=bl,foreground=bu,activebackground=bu,activeforeground=wh);file_menu.add_command(label=Save,command=save_files);file_menu.add_command(label=Open,command=browse_files)
+    options=Menu(menubar,background=bl,foreground=bu,activebackground=bu,activeforeground=wh);options.add_command(label=NightM,command=night_mode);options.add_command(label=DayM,command=day_mode)
+    menubar.add_cascade(label=File,menu=file_menu);menubar.add_cascade(label=Prefrences,menu=options)
 
-    box = (['Afrikaans', 'Albanian', 'Arabic', 'Armenian', 'Azerbaijani', 'Basque', 'Belarusian', 'Bengali', 'Bosnian', 'Bulgarian', 'Burmese', 'Catalan', 'Cebuano', 'Chichewa', 'Chinese Simplified', 'Chinese Traditional', 'Corsican', 'Croatian', 'Czech', 'Danish', 'Dutch', 'English', 'Esperanto',  'Estonian', 'Filipino', 'Finnish', 'French', 'Frisian', 'Galician', 'Georgian', 'German', 'Greek', 'Gujarati', 'Haitian Creole', 'Hausa', 'Hawaiian', 'Hebrew', 'Hindi', 'Hmong', 'Hungarian', 'Icelandic', 'Igbo', 'Indonesian', 'Irish', 'Italian', 'Japanese', 'Javanese', 'Kannada', 'Kazakh', 'Khmer', 'Korean', 'Kurdish', 'Kyrgyz', 'Lao', 'Latin', 'Latvian', 'Lithuanian',  'Luxembourgish', 'Macedonian', 'Malay', 'Malayalam', 'Malagasy', 'Maltese', 'Maori', 'Marathi',  'Mongolian',  'Nepali', 'Norwegian', 'Odia', 'Pashto', 'Persian', 'Polish',  'Portuguese', 'Punjabi', 'Romanian', 'Russian', 'Samoan', 'Scots Gaelic', 'Serbian', 'Sesotho', 'Shona', 'Sindhi', 'Sinhala', 'Slovak', 'Slovenian', 'Somali', 'Spanish', 'Sundanese', 'Swahili', 'Swedish', 'Tajik', 'Tamil', 'Telugu', 'Thai', 'Turkish', 'Ukrainian', 'Urdu', 'Uyghur', 'Uzbek', 'Vietnamese', 'Welsh', 'Xhosa', 'Yiddish', 'Yoruba', 'Zulu'])
+    box=(['Afrikaans','Albanian','Arabic','Armenian','Azerbaijani','Basque','Belarusian','Bengali','Bosnian','Bulgarian','Burmese','Catalan','Cebuano','Chichewa','ChineseSimplified','ChineseTraditional','Corsican','Croatian','Czech','Danish','Dutch','English','Esperanto','Estonian','Filipino','Finnish','French','Frisian','Galician','Georgian','German','Greek','Gujarati','HaitianCreole','Hausa','Hawaiian','Hebrew','Hindi','Hmong','Hungarian','Icelandic','Igbo','Indonesian','Irish','Italian','Japanese','Javanese','Kannada','Kazakh','Khmer','Korean','Kurdish','Kyrgyz','Lao','Latin','Latvian','Lithuanian','Luxembourgish','Macedonian','Malay','Malayalam','Malagasy','Maltese','Maori','Marathi','Mongolian','Nepali','Norwegian','Odia','Pashto','Persian','Polish','Portuguese','Punjabi','Romanian','Russian','Samoan','ScotsGaelic','Serbian','Sesotho','Shona','Sindhi','Sinhala','Slovak','Slovenian','Somali','Spanish','Sundanese','Swahili','Swedish','Tajik','Tamil','Telugu','Thai','Turkish','Ukrainian','Urdu','Uyghur','Uzbek','Vietnamese','Welsh','Xhosa','Yiddish','Yoruba','Zulu'])
 
-    languages = {'Arabic':'ar','Afrikaans': 'af', 'Albanian': 'sq', 'Armenian': 'hy', 'Azerbaijani': 'az', 'Basque': 'eu', 'Belarusian': 'be', 'Bengali': 'bn', 'Bosnian': 'bs', 'Bulgarian': 'bg', 'Burmese': 'bg', 'Catalan': 'ca', 'Cebuano': 'ceb', 'Chichewa': 'ny', 'Chinese Simplified': 'zh-cn', 'Chinese Traditional': 'zh-tw', 'Corsican': 'co', 'Croatian': 'hr', 'Czech': 'cs', 'Danish': 'da', 'Dutch': 'nl', 'English': 'en', 'Esperanto': 'eo', 'Estonian': 'et', 'Filipino': 'tl', 'Finnish': 'fi', 'French': 'fr', 'Frisian': 'fy', 'Galician': 'gl', 'Georgian': 'ka', 'German': 'de', 'Greek': 'el', 'Gujarati': 'gu', 'Haitian': 'gt', 'Creole': 'ha', 'Hausa': 'haw', 'Hawaiian': 'iw', 'Hebrew': 'he', 'Hindi': 'hi', 'Hmong': 'hmn', 'Hungarian': 'hu', 'Icelandic': 'is', 'Igbo': 'ig', 'Indonesian': 'id', 'Irish': 'ga', 'Italian': 'it', 'Japanese': 'ja', 'Javanese': 'jw', 'Kannada': 'kn', 'Kazakh': 'kk', 'Khmer': 'km', 'Korean': 'ko', 'Kurdish': 'ku', 'Kyrgyz': 'ky', 'Lao': 'lo', 'Latin': 'la', 'Latvian': 'lv', 'Lithuanian': 'lt', 'Luxembourgish': 'lb', 'Macedonian': 'mk', 'Malay': 'mg', 'Malayalam': 'ms', 'Malagasy': 'ml', 'Maltese': 'mt', 'Maori': 'mi', 'Marathi': 'mr', 'Mongolian': 'mn', 'Nepali': 'ne', 'Norwegian': 'no', 'Odia': 'or', 'Pashto': 'ps', 'Persian': 'fa', 'Polish': 'pl', 'Portuguese': 'pt', 'Punjabi': 'pa', 'Romanian': 'ro', 'Russian': 'ru', 'Samoan': 'sm', 'Scots Gaelic': 'gd', 'Serbian': 'sr', 'Sesotho': 'st', 'Shona': 'sn', 'Sindhi': 'sd', 'Sinhala': 'si', 'Slovak': 'sk', 'Slovenian': 'sl', 'Somali': 'so', 'Spanish': 'es', 'Sundanese': 'su', 'Swahili': 'sw', 'Swedish': 'sv', 'Tajik': 'tg', 'Tamil': 'ta', 'Telugu': 'te', 'Thai': 'th', 'Turkish': 'tr', 'Ukrainian': 'uk', 'Urdu': 'ur', 'Uyghur': 'ug', 'Uzbek': 'uz', 'Vietnamese': 'vi', 'Welsh': 'cy', 'Xhosa': 'xh', 'Yiddish': 'yi', 'Yoruba': 'yo', 'Zulu': 'zu'}
+    languages={'Arabic':'ar','Afrikaans':'af','Albanian':'sq','Armenian':'hy','Azerbaijani':'az','Basque':'eu','Belarusian':'be','Bengali':'bn','Bosnian':'bs','Bulgarian':'bg','Burmese':'bg','Catalan':'ca','Cebuano':'ceb','Chichewa':'ny','ChineseSimplified':'zh-cn','ChineseTraditional':'zh-tw','Corsican':'co','Croatian':'hr','Czech':'cs','Danish':'da','Dutch':'nl','English':'en','Esperanto':'eo','Estonian':'et','Filipino':'tl','Finnish':'fi','French':'fr','Frisian':'fy','Galician':'gl','Georgian':'ka','German':'de','Greek':'el','Gujarati':'gu','Haitian':'gt','Creole':'ha','Hausa':'haw','Hawaiian':'iw','Hebrew':'he','Hindi':'hi','Hmong':'hmn','Hungarian':'hu','Icelandic':'is','Igbo':'ig','Indonesian':'id','Irish':'ga','Italian':'it','Japanese':'ja','Javanese':'jw','Kannada':'kn','Kazakh':'kk','Khmer':'km','Korean':'ko','Kurdish':'ku','Kyrgyz':'ky','Lao':'lo','Latin':'la','Latvian':'lv','Lithuanian':'lt','Luxembourgish':'lb','Macedonian':'mk','Malay':'mg','Malayalam':'ms','Malagasy':'ml','Maltese':'mt','Maori':'mi','Marathi':'mr','Mongolian':'mn','Nepali':'ne','Norwegian':'no','Odia':'or','Pashto':'ps','Persian':'fa','Polish':'pl','Portuguese':'pt','Punjabi':'pa','Romanian':'ro','Russian':'ru','Samoan':'sm','ScotsGaelic':'gd','Serbian':'sr','Sesotho':'st','Shona':'sn','Sindhi':'sd','Sinhala':'si','Slovak':'sk','Slovenian':'sl','Somali':'so','Spanish':'es','Sundanese':'su','Swahili':'sw','Swedish':'sv','Tajik':'tg','Tamil':'ta','Telugu':'te','Thai':'th','Turkish':'tr','Ukrainian':'uk','Urdu':'ur','Uyghur':'ug','Uzbek':'uz','Vietnamese':'vi','Welsh':'cy','Xhosa':'xh','Yiddish':'yi','Yoruba':'yo','Zulu':'zu'}
 
-    spoken = {'Arabic':'ar', 'Pashto':'ar', 'Persian':'ar', 'Punjabi':'ar', 'Sindhi':'ar', 'Somali':'ar', 'Sundanese':'ar', 'Urdu':'ar', 'Uyghur':'ar', 'Azerbaijani':'ru', 'Belarusian':'ru', 'Kazakh':'ru', 'Kyrgyz':'ru', 'Mongolian':'ru', 'Russian':'ru', 'Tajik':'ru', 'Uzbek':'ru', 'Basque':'es', 'Spanish':'es', 'Catalan':'ca', 'Galician':'ca', 'Filipino':'tl', 'Cebuano':'tl', 'Italian':'it', 'Corsican':'it', 'German':'de', 'Frisian':'de', 'Luxembourgish':'de', 'Vietnamese':'vi', 'Hmong':'vi', 'Thai':'th', 'Malay':'th', 'Latin':'la', 'Maltese':'la', 'Latvian':'lv', 'Lithuanian':'lv', 'Javanese':'jw', 'Hawaiian':'jw', 'Samoan':'jw', 'Maori':'jw', 'Slovak':'sk', 'Slovenian':'sk', 'Welsh':'cy', 'Scots Gaelic':'cy', 'Irish':'cy', 'Swahili':'sw', 'Chichewa':'sw', 'Shona':'sw', 'Xhosa':'sw', 'Zulu':'sw', 'Haitian Creole':'fr', 'French':'fr', 'Afrikaans': 'af', 'Albanian': 'sq', 'Armenian': 'hy', 'Bengali': 'bn', 'Bosnian': 'bs', 'Bulgarian': 'bg', 'Chinese Simplified': 'zh-cn', 'Chinese Traditional': 'zh-tw', 'Croatian': 'hr', 'Czech': 'cs', 'Danish': 'da', 'Dutch': 'nl', 'Esperanto': 'eo', 'English': 'en', 'Estonian': 'et', 'French': 'fr', 'Finnish': 'fi', 'Greek': 'el', 'Gujarati': 'gu', 'Hindi': 'hi', 'Hungarian': 'hu', 'Icelandic': 'is', 'Indonesian': 'id', 'Japanese': 'ja', 'Kannada': 'kn', 'Khmer': 'km', 'Korean': 'ko', 'Lao': 'lo', 'Macedonian': 'mk', 'Malayalam': 'ml', 'Burmese': 'my', 'Nepali': 'ne', 'Norwegian': 'no', 'Polish': 'pl', 'Portuguese': 'pt', 'Romanian': 'ro', 'Serbian': 'sr', 'Sinhala': 'si', 'Swedish': 'sv', 'Tamil': 'ta', 'Telugu': 'te', 'Turkish': 'tr', 'Ukrainian': 'uk'}
+    spoken={'Arabic':'ar','Pashto':'ar','Persian':'ar','Punjabi':'ar','Sindhi':'ar','Somali':'ar','Sundanese':'ar','Urdu':'ar','Uyghur':'ar','Azerbaijani':'ru','Belarusian':'ru','Kazakh':'ru','Kyrgyz':'ru','Mongolian':'ru','Russian':'ru','Tajik':'ru','Uzbek':'ru','Basque':'es','Spanish':'es','Catalan':'ca','Galician':'ca','Filipino':'tl','Cebuano':'tl','Italian':'it','Corsican':'it','German':'de','Frisian':'de','Luxembourgish':'de','Vietnamese':'vi','Hmong':'vi','Thai':'th','Malay':'th','Latin':'la','Maltese':'la','Latvian':'lv','Lithuanian':'lv','Javanese':'jw','Hawaiian':'jw','Samoan':'jw','Maori':'jw','Slovak':'sk','Slovenian':'sk','Welsh':'cy','ScotsGaelic':'cy','Irish':'cy','Swahili':'sw','Chichewa':'sw','Shona':'sw','Xhosa':'sw','Zulu':'sw','HaitianCreole':'fr','French':'fr','Afrikaans':'af','Albanian':'sq','Armenian':'hy','Bengali':'bn','Bosnian':'bs','Bulgarian':'bg','ChineseSimplified':'zh-cn','ChineseTraditional':'zh-tw','Croatian':'hr','Czech':'cs','Danish':'da','Dutch':'nl','Esperanto':'eo','English':'en','Estonian':'et','French':'fr','Finnish':'fi','Greek':'el','Gujarati':'gu','Hindi':'hi','Hungarian':'hu','Icelandic':'is','Indonesian':'id','Japanese':'ja','Kannada':'kn','Khmer':'km','Korean':'ko','Lao':'lo','Macedonian':'mk','Malayalam':'ml','Burmese':'my','Nepali':'ne','Norwegian':'no','Polish':'pl','Portuguese':'pt','Romanian':'ro','Serbian':'sr','Sinhala':'si','Swedish':'sv','Tamil':'ta','Telugu':'te','Turkish':'tr','Ukrainian':'uk'}
 
     combo = ttk.Combobox(frm, values=box)
     combo.set(SelectL); combo.pack(fill="x")
@@ -88,19 +69,16 @@ def alexander():
     input_text2 = tk.Text(root, height=1, fg=bu, bg=bu, wrap='word', undo="true", foreground=bl, selectforeground=gr, selectbackground= bl)
 
     def verbalize_text():
-        V = vlc.MediaPlayer(tempmp3file)
-        V.play(); input_text.tag_add("start", "1.0","end-1c"); input_text.tag_configure("start", foreground=bl); input_text2.pack_forget()
+        vlc.MediaPlayer(tempmp3file).play(); input_text.tag_add("start", "1.0","end-1c"); input_text.tag_configure("start", foreground=bl); input_text2.pack_forget()
     def translate_text():
         X = combo.get(); input_text2.pack_forget()
         if X == SelectL: input_text.delete(1.0, "end-1c"); input_text.insert(1.0, SelectL)
         else:
-            Y = input_text.get(1.0, "end-1c")
-            translation=translator.translate(Y, dest=languages[X])
-            NA = ['Georgian', 'Hausa', 'Hausa', 'Hebrew', 'Igbo', 'Odia', 'Yiddish', 'Yoruba', 'Kurdish', 'Malagasy', 'Marathi', 'Sesotho']
+            translation=translator.translate((input_text.get(1.0, "end-1c")), dest=languages[X])
+            NA=['Georgian','Hausa','Hausa','Hebrew','Igbo','Odia','Yiddish','Yoruba','Kurdish','Malagasy','Marathi','Sesotho']
             if X in NA: Button.pack_forget()
             else:
-                tts = gtts.gTTS((f"{translation.text}"), lang=spoken[X])
-                tts.save(tempmp3file); Button.pack()
+                (gtts.gTTS((f"{translation.text}"), lang=spoken[X])).save(tempmp3file); Button.pack()
             input_text.delete(1.0, "end-1c"); input_text.insert(1.0, translation.text); input_text.focus()
     def record_voice():
         X = combo.get(); input_text2.pack_forget()
@@ -116,13 +94,15 @@ def alexander():
     def wiki_search():
         input_text2.pack_forget()
         try:
-            X = combo.get(); Y = languages[X]; wikipedia.set_lang(Y)
+            wikipedia.set_lang(languages[(combo.get())])
             try: wiki = wikipedia.summary(input_text.get(1.0, "end-1c"))
             except: wiki = "404"; input_text.delete(1.0, "end-1c"); input_text.insert(1.0, wiki); input_text.focus()
-        except: sln = Error; input_text.delete(1.0, "end-1c"); input_text.insert(1.0, sln); combo.focus()
+        except:
+            wiki = Error
+        input_text.delete(1.0, "end-1c"); input_text.insert(1.0, wiki); combo.focus()
 
-    input_text.bind("<Button-3>", popup_menu); root.bind("<Control_L><v>", paste); root.bind("<Control_L><x>", cut); root.bind("<Control_L><c>", copy); root.bind("<Control_L><a>", select_all)
-    ttk.Button(image = btn1, command=translate_text).pack(); Button = ttk.Button(image = btn2, command=verbalize_text); ttk.Button(image = btn3, command=record_voice).pack(); ttk.Button(image= btn4, command=wiki_search).pack()
+    root.bind("<Control_L><v>",paste);root.bind("<Control_L><x>",cut);root.bind("<Control_L><c>",copy);root.bind("<Control_L><a>",select_all)
+    ttk.Button(image=btn1,command=translate_text).pack();Button=ttk.Button(image=btn2,command=verbalize_text);ttk.Button(image=btn3,command=record_voice).pack();ttk.Button(image=btn4,command=wiki_search).pack()
     root.mainloop()
 
 
