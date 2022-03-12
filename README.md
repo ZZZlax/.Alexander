@@ -10,4 +10,4 @@ Future updates include a system for highlighting Nouns, Verbs, and the like as w
 
 ***Note: You will have to install tkinter on your own, on Ubuntu this is done by running "sudo apt install python3-tk."***
 
-***Included is a .zip of all the .py files. You can delete the .py files and call Alexander by running the command "python .Alexander/.Run.zip" to save space
+***Included is .Run.py, which is a .zip of all the .py files in .Alexander converted into a .py file (You can also extract the original .py files by opening .Run.py in your archive manager). You can delete the .py files and call Alexander by running the command "python .Alexander/.Run.py" to save space***
