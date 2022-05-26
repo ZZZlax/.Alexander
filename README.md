@@ -6,4 +6,4 @@
 
 Translate languages, search wikipedia in other languages, or search google in your browsers defined region(s), and learn to pronounce words from native speakers through the speech module.
 
-Future updates include a system for highlighting Nouns, Verbs, and the like as well as scroll over definitions and more.
+Future updates include a system for highlighting Nouns, Verbs, and the like as well as scroll over definitions as well as an appimage released and a GUI upgrade to QT5/6.
