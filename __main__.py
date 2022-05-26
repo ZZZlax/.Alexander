@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import gtts, vlc, pyttsx3, os, os.path, wikipedia, speech_recognition, webbrowser, locale, tempfile, atexit; import tkinter as tk; from tkinter import Tk, PhotoImage, ttk, Menu, filedialog, scrolledtext; from googletrans import Translator; from googlesearch import search
+import gtts, vlc, pyttsx3, os, os.path, wikipedia, speech_recognition, locale, tempfile, atexit; import tkinter as tk; from tkinter import Tk, PhotoImage, ttk, Menu, filedialog, scrolledtext; from googletrans import Translator
 
 def clean():
     os.unlink(tempmp3file)
@@ -60,7 +60,7 @@ def alexander():
 
     languages={'Arabic':'ar','Afrikaans':'af','Albanian':'sq','Armenian':'hy','Azerbaijani':'az','Basque':'eu','Belarusian':'be','Bengali':'bn','Bosnian':'bs','Bulgarian':'bg','Burmese':'bg','Catalan':'ca','Cebuano':'ceb','Chichewa':'ny','ChineseSimplified':'zh-cn','ChineseTraditional':'zh-tw','Corsican':'co','Croatian':'hr','Czech':'cs','Danish':'da','Dutch':'nl','English':'en','Esperanto':'eo','Estonian':'et','Filipino':'tl','Finnish':'fi','French':'fr','Frisian':'fy','Galician':'gl','Georgian':'ka','German':'de','Greek':'el','Gujarati':'gu','Haitian':'gt','Creole':'ha','Hausa':'haw','Hawaiian':'iw','Hebrew':'he','Hindi':'hi','Hmong':'hmn','Hungarian':'hu','Icelandic':'is','Igbo':'ig','Indonesian':'id','Irish':'ga','Italian':'it','Japanese':'ja','Javanese':'jw','Kannada':'kn','Kazakh':'kk','Khmer':'km','Korean':'ko','Kurdish':'ku','Kyrgyz':'ky','Lao':'lo','Latin':'la','Latvian':'lv','Lithuanian':'lt','Luxembourgish':'lb','Macedonian':'mk','Malay':'mg','Malayalam':'ms','Malagasy':'ml','Maltese':'mt','Maori':'mi','Marathi':'mr','Mongolian':'mn','Nepali':'ne','Norwegian':'no','Odia':'or','Pashto':'ps','Persian':'fa','Polish':'pl','Portuguese':'pt','Punjabi':'pa','Romanian':'ro','Russian':'ru','Samoan':'sm','ScotsGaelic':'gd','Serbian':'sr','Sesotho':'st','Shona':'sn','Sindhi':'sd','Sinhala':'si','Slovak':'sk','Slovenian':'sl','Somali':'so','Spanish':'es','Sundanese':'su','Swahili':'sw','Swedish':'sv','Tajik':'tg','Tamil':'ta','Telugu':'te','Thai':'th','Turkish':'tr','Ukrainian':'uk','Urdu':'ur','Uyghur':'ug','Uzbek':'uz','Vietnamese':'vi','Welsh':'cy','Xhosa':'xh','Yiddish':'yi','Yoruba':'yo','Zulu':'zu'}
 
-    spoken={'Arabic':'ar','Pashto':'ar','Persian':'ar','Punjabi':'ar','Sindhi':'ar','Somali':'ar','Sundanese':'ar','Urdu':'ar','Uyghur':'ar','Azerbaijani':'ru','Belarusian':'ru','Kazakh':'ru','Kyrgyz':'ru','Mongolian':'ru','Russian':'ru','Tajik':'ru','Uzbek':'ru','Basque':'es','Spanish':'es','Catalan':'ca','Galician':'ca','Filipino':'tl','Cebuano':'tl','Italian':'it','Corsican':'it','German':'de','Frisian':'de','Luxembourgish':'de','Vietnamese':'vi','Hmong':'vi','Thai':'th','Malay':'th','Latin':'la','Maltese':'la','Latvian':'lv','Lithuanian':'lv','Javanese':'jw','Hawaiian':'jw','Samoan':'jw','Maori':'jw','Slovak':'sk','Slovenian':'sk','Welsh':'cy','ScotsGaelic':'cy','Irish':'cy','Swahili':'sw','Chichewa':'sw','Shona':'sw','Xhosa':'sw','Zulu':'sw','HaitianCreole':'fr','French':'fr','Afrikaans':'af','Albanian':'sq','Armenian':'hy','Bengali':'bn','Bosnian':'bs','Bulgarian':'bg','ChineseSimplified':'zh-cn','ChineseTraditional':'zh-tw','Croatian':'hr','Czech':'cs','Danish':'da','Dutch':'nl','Esperanto':'eo','English':'en','Estonian':'et','French':'fr','Finnish':'fi','Greek':'el','Gujarati':'gu','Hindi':'hi','Hungarian':'hu','Icelandic':'is','Indonesian':'id','Japanese':'ja','Kannada':'kn','Khmer':'km','Korean':'ko','Lao':'lo','Macedonian':'mk','Malayalam':'ml','Burmese':'my','Nepali':'ne','Norwegian':'no','Polish':'pl','Portuguese':'pt','Romanian':'ro','Serbian':'sr','Sinhala':'si','Swedish':'sv','Tamil':'ta','Telugu':'te','Turkish':'tr','Ukrainian':'uk'}
+    spoken={'Arabic':'ar','Pashto':'ar','Persian':'ar','Punjabi':'ar','Sindhi':'ar','Somali':'ar','Sundanese':'ar','Urdu':'ar','Uyghur':'ar','Azerbaijani':'ru','Belarusian':'ru','Kazakh':'ru','Kyrgyz':'ru','Mongolian':'ru','Russian':'ru','Tajik':'ru','Uzbek':'ru','Basque':'es','Spanish':'es','Catalan':'ca','Galician':'ca','Filipino':'tl','Cebuano':'tl','Italian':'it','Corsican':'it','German':'de','Frisian':'de','Luxembourgish':'de','Vietnamese':'vi','Hmong':'vi','Thai':'th','Malay':'th','Latin':'la','Maltese':'la','Latvian':'lv','Lithuanian':'lv','Javanese':'jw','Hawaiian':'jw','Samoan':'jw','Maori':'jw','Slovak':'sk','Slovenian':'sk','Welsh':'cy','ScotsGaelic':'cy','Irish':'cy','Swahili':'sw','Chichewa':'sw','Shona':'sw','Xhosa':'sw','Zulu':'sw','HaitianCreole':'fr','French':'fr','Afrikaans':'af','Albanian':'sq','Armenian':'hy','Bengali':'bn','Bosnian':'bs','Bulgarian':'bg','ChineseSimplified':'zh-cn','ChineseTraditional':'zh-tw','Croatian':'hr','Czech':'cs','Danish':'da','Dutch':'nl','Esperanto':'eo','English':'en','Estonian':'et','French':'fr','Finnish':'fi','Greek':'el','Gujarati':'gu','Hindi':'hi','Hungarian':'hu','Icelandic':'is','Indonesian':'id','Japanese':'ja','Kannada':'kn','Khmer':'km','Korean':'ko','Lao':'lo', 'Malayalam':'ml','Burmese':'my','Nepali':'ne','Norwegian':'no','Polish':'pl','Portuguese':'pt','Romanian':'ro','Serbian':'sr','Sinhala':'si','Swedish':'sv','Tamil':'ta','Telugu':'te','Turkish':'tr','Ukrainian':'uk'}
 
     combo = ttk.Combobox(frm, values=box)
     combo.set(SelectL); combo.pack(fill="x")
@@ -75,7 +75,7 @@ def alexander():
         if X == SelectL: input_text.delete(1.0, "end-1c"); input_text.insert(1.0, SelectL)
         else:
             translation=translator.translate((input_text.get(1.0, "end-1c")), dest=languages[X])
-            NA=['Georgian','Hausa','Hausa','Hebrew','Igbo','Odia','Yiddish','Yoruba','Kurdish','Malagasy','Marathi','Sesotho']
+            NA=['Georgian','Hausa','Hausa','Hebrew','Igbo', 'Macedonian', 'Odia','Yiddish','Yoruba','Kurdish','Malagasy','Marathi','Sesotho']
             if X in NA: Button.pack_forget()
             else:
                 (gtts.gTTS((f"{translation.text}"), lang=spoken[X])).save(tempmp3file); Button.pack()
@@ -107,5 +107,9 @@ def alexander():
 
 
 if __name__ == "__main__":
-    alexander()
-    atexit.register(clean())
+    try:
+        alexander()
+        atexit.register(clean())
+    except:
+        import pip_quik
+        pip_quick()
